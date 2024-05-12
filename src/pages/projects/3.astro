@@ -1,0 +1,327 @@
+---
+import Layout from '../../layouts/alt.astro';
+---
+
+<Layout title="encoding!" desc="why is this page called 3? 3 what? friends? dollers? pounds? friends? what????">
+	<main>
+        <div class="menus">
+
+            <div class="boxs">
+		        <p id="encoding">encoding</p>
+                <p>
+                    <form onsubmit="return myFunction()">
+                        input: <input type="text" id="input1" size="20" name="input1"><br>
+                    </form>
+                    <button onclick="encoding()" class="button">push it.</button>
+                </p>
+            </div>
+
+            <div class="boxs">
+		        <p id="decoding">decoding</p>
+                <p>
+                    <form onsubmit="return decoding()">
+                        input: <input type="text" id="input0" size="20" name="input0"><br>
+                    </form>
+                    <button onclick="decoding()" class="button">push it.</button>
+                </p>
+            </div>
+
+            <div class="boxs">
+		        <p id="key">key</p>
+                <p id="output">encrypting</p>
+                <p>
+                    <form onsubmit="return encrypting()">
+                        input: <input type="text" id="input2" size="20" name="input2"><br>
+                    </form>
+                    <button onclick="encrypting()" class="button">push it.</button>
+                </p>
+            </div>
+
+            <div class="boxs">
+		        <p id="decrypting">decrypting</p>
+                <p>
+                    <form onsubmit="return decrypting()">
+                        input: <input type="text" id="input3" size="20" name="input3"><br><br>
+                        key: <input type="text" id="key1" size="20" name="key1"><br>
+                    </form>
+                    <button onclick="decrypting()" class="button">push it.</button>
+                </h1>
+            </div>
+        </div>
+	</main>
+</Layout>
+
+<script is:inline>
+    function findMapKey (map, ind) {
+        var match = null;
+        Object.keys(map).some(function(key) {
+            var test = map[key].indexOf(ind)!==-1;
+            if (test) { 
+                match = key; 
+            } 
+            return test;
+        });
+        return match;
+    }
+
+    var hexs = {
+        0 : "0",
+        1 : "1",
+        2 : "2",
+        3 : "3",
+        4 : "4",
+        5 : "5",
+        6 : "6",
+        7 : "7",
+        8 : "8",
+        9 : "9",
+        10 : "a",
+        11 : "b",
+        12 : "c",
+        13 : "d",
+        14 : "e",
+        15 : "f",
+    }
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    const copyContent = async (text) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            window.alert('Content copied to clipboard');
+            } catch (err) {
+            console.error('Failed to copy: ', err);
+            }
+    }
+
+    function decoding(){
+        var input = document.getElementById("input0").value;
+        var output = "0"
+        var count = [3,3,3,3,3,3,3,3,3]
+        var passing = 1
+        var counting = "false"
+        var item = 7
+        var end = "false"
+        var text = input
+        var count3 = ""
+        var counter = 0
+        var figure = ""
+        var output2 = ""
+
+        for (items in input){
+            if (counter != 8){
+                figure = figure + input[items]
+                counter = counter + 1  
+            }
+            if (counter == 8){
+                figure = figure + "3"
+                while (end == "false"){
+                    if (passing != 0){
+                        var counting = "true"
+                        while (counting == "true"){
+                            if (count[item] == 3){
+                                count[item] = count[item] + 1
+                                if (item != 8){
+                                    var item = 8
+                                    var counting = "false"
+                                }
+                            }
+                            else if (count[item] == 4){
+                                count[item] = count[item] + 3
+                                if (item != 8){
+                                    var item = 8
+                                    var counting = "false"
+                                }
+                            }
+                            else if (count[item] == 7){
+                                count[item] = 3
+                                if (item != 0){
+                                    var item = item - 1
+                                }
+                            }
+                        }
+
+                        var passing = passing + 1
+                        var count2 = count
+                
+                        if (count.join("") == figure){
+                            end = "true"
+                            output = passing
+                        }
+                    }
+                }   
+                output2 = output2 + String.fromCharCode(passing)
+                counter = 0
+                figure = ""
+                passing = 1 
+                count = [3,3,3,3,3,3,3,3,3]
+                end = "false"
+            }
+        }   
+        document.getElementById("decoding").innerHTML = output2
+        copyContent(output2);
+    }
+
+    function encoding(){
+    var input = document.getElementById("input1").value;
+    var output = "0"
+    var count = [3,3,3,3,3,3,3,3,3]
+    var passing = 1
+    var counting = "false"
+    var item = 7
+    var end = "false"
+    var text = input
+    var count3 = ""
+    
+    for (items in input){
+        input2 = text.charCodeAt(items);
+
+        while (end == "false"){
+            if (passing != 0){
+                var counting = "true"
+
+                while (counting == "true"){
+                    if (count[item] == 3){
+                        count[item] = count[item] + 1
+                        if (item != 8){
+                            var item = 8
+                            var counting = "false"
+                        }
+                    }
+                    else if (count[item] == 4){
+                        count[item] = count[item] + 3
+                        if (item != 8){
+                            var item = 8
+                            var counting = "false"
+                        }
+                    }
+                    else if (count[item] == 7){
+                        count[item] = 3
+                        if (item != 0){
+                            var item = item - 1
+                        }
+                    }
+                }
+
+                var passing = passing + 1
+                var count2 = count
+            
+                if (passing == input2){
+                    count = count.join("")
+                    end = "true"
+                    counting = "false"
+                }
+                if (count == [7,7,7,7,7,7,7,7,3]){
+                    end = "true"
+                    count = "ERROR"
+                }
+            }
+        }
+        count = count.toString()
+        count = count.slice(0, -1);
+        count3 = count3 + count
+        count = [3,3,3,3,3,3,3,3,3]
+        passing = 1
+        end = "false"
+    } 
+    document.getElementById("encoding").innerHTML = count3
+    copyContent(count3);
+    } 
+
+    function encrypting(){
+        var input = document.getElementById("input2").value;
+
+        console.log(input)
+
+        var boop = 1
+        var key1 = ""
+        var key2 = ""
+        var out = ""
+        var key3 = ""
+        var passing = 0
+        var count = 0
+        var number2 = ""
+        var num = ""
+        var number = input
+
+        while (passing != 8){
+            key1 = key1 + getRandomInt(3);
+            passing = passing + 1
+        }
+        key2 = getRandomInt(9);
+        passing = 0
+        while (passing != 5){
+            keydata = getRandomInt(15);
+            key3 = key3 + hexs[keydata]
+            boop = boop * keydata
+            passing = passing + 1
+        }
+
+        console.log(number)
+        boop = boop * key2
+        for (item in number){
+            if (count != 8){
+                count = count + 1
+                num = num + number[item]
+            }
+            if (count == 8){
+                num = num - key1
+                num = num + boop
+                number2 = number2 + num
+                count = 0
+                num = ""
+            }
+        }
+
+        keys = key1 + " " + key2 + " " + key3
+        out = out
+        out = keys
+        output = number2
+
+        document.getElementById("key").innerHTML = out
+        document.getElementById("output").innerHTML = output
+        content = out + "\n" + output
+        copyContent(content);
+    }
+
+    function decrypting(){
+        var input = document.getElementById("input3").value;
+        var key = document.getElementById("key1").value;
+        var keys = ""
+
+        var keys = key.split(" ")
+        var key1 = keys[0]
+        var key2 = keys[1]
+        var key3 = keys[2]
+        var key5 = 1
+        var number2 = ""
+        var count = 0
+        var num = ""
+
+        for (item in key3){
+            key4 = findMapKey(hexs, key3[item]);
+            key5 = key5 * key4
+        }
+
+        key2 = key5 * key2
+
+        for (items in input){
+            if (count != 8){
+                count = count + 1
+                num = num + input[items]
+            }
+            if (count == 8){
+                count = 0
+                num = num - key2
+                num = num + Math.floor(key1)
+                number2 = number2 + Math.floor(num)
+                num = ""
+            }
+        }
+
+        document.getElementById("decrypting").innerHTML = number2
+        copyContent(number2);
+    }
+</script>

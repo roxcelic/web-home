@@ -1,0 +1,62 @@
+---
+const { frontmatter } = Astro.props;
+
+import Menu from '../comp/bar.astro'
+import SideBar from '../comp/sidemenu.astro'
+
+import '../res/style.css'
+import '../res/base.css'
+import '../res/media.css'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={frontmatter.desc}/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="https://roxcelic.love/images/icon.png">
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Pixelify+Sans&display=swap" rel="stylesheet">
+
+
+		<meta name="generator" content={Astro.generator} />
+		<title id="title">{frontmatter.title}</title>
+	</head>
+    <body id="text-c">
+		<SideBar />
+        <Menu/>
+        <div id="info">
+            <p>
+                posted on - {frontmatter.pubDate}<br>
+                updated on - {frontmatter.upDate}<br>
+                desc - {frontmatter.desc}<br>
+                written by - {frontmatter.auth}<br>
+            </p>
+        </div>
+		<div id="main">
+			<slot/>
+			<script src="https://giscus.app/client.js"
+				data-repo="roxcelic/roxcelic.github.io"
+				data-repo-id="R_kgDOLXdD1A"
+				data-category="Announcements"
+				data-category-id="DIC_kwDOLXdD1M4Cej46"
+				data-mapping="url"
+				data-strict="0"
+				data-reactions-enabled="0"
+				data-emit-metadata="0"
+				data-input-position="top"
+				data-lang="en"
+				data-loading="lazy"
+				crossorigin="anonymous"
+				async 
+            />
+		</div>
+		<div id="holt">
+			<div class="bar" id="holt2"/>
+		</div>
+    </body>
+</html>

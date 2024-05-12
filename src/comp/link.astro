@@ -1,0 +1,10 @@
+---
+const { title, url, dates, desc } = Astro.props;
+---
+<div class="bar" id="holt2"/>
+<a href={url} id="links">
+    <p>
+        - {title} -<br>
+        - {dates} - {desc} -
+    </p>
+</a>

@@ -1,0 +1,83 @@
+html{
+    background-color: var(--bg-color);
+    background-image: var(--bgimage);
+    background-repeat: no-repeat;
+    background-size:cover;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: all ease-in-out 1s;
+}
+body{
+    padding: 0;
+    margin: 0;
+    color: var(--main-text-color);
+    text-shadow: 0 0 10px var(--main-color);
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    scrollbar-color: var(--alter-color) transparent;
+    scrollbar-width: thin;
+}
+#text-c{
+    text-align: center;
+}
+  
+:root{
+    --main-color: rgb(177, 85, 100);
+    --set-color: transparent;
+    --set-round: 12px;
+    --main-text-color: white;
+    --bg-color: black;
+    --bgimage: url();
+    --songbox-op: 0;
+    --alter-color: black;
+}
+:link{
+    color: var(--main-text-color);
+}
+a:hover{
+    color: var(--main-text-color);
+    --underline-width: 100%;
+}
+a:active{
+    color: var(--main-text-color);
+}
+a {
+    background: linear-gradient(currentColor 0 0) bottom left/ var(--underline-width, 0%) 0.1em no-repeat;
+    color: var(--main-text-color);
+    text-decoration: none;
+    transition: background-size 0.5s;
+}
+::selection {
+    background: var(--main-color);
+}
+.banner-left ::selection{
+    background: var(--alter-color);
+}
+.popup ::selection{
+    background: var(--alter-color);
+}
+button{
+    margin-top: 2.5vh;
+    background-color: transparent;
+    color: white;
+    border-color: var(--main-color);
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    scrollbar-color: var(--main-color);
+}
+input{
+    margin-top: 2.5vh;
+    background-color: transparent;
+    color: white;
+    border-color: var(--main-color);
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    scrollbar-color: var(--main-color);
+}

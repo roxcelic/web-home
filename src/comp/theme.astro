@@ -1,0 +1,142 @@
+<p style="margin-top: -4vh;margin-bottom: 1vh;">
+    <button onclick="showPopup()">customise theme</button>
+</p>
+<script is:inline>
+function getCookieValue(cookieName) {
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        const c = ca[i].trim();
+        if (c.startsWith(cookieName + '=')) {
+            return c.substring(cookieName.length + 1);
+        }
+    }
+    return null;
+}
+
+document.documentElement.style.setProperty('--main-color', getCookieValue('main-color'));
+document.documentElement.style.setProperty('--bg-color', getCookieValue('bg-color'));
+document.documentElement.style.setProperty('--set-color', getCookieValue('set-color'));
+document.documentElement.style.setProperty('--main-text-color', getCookieValue('main-text-color'));
+document.documentElement.style.setProperty('--main-text-color', getCookieValue('main-text-color'));
+document.documentElement.style.setProperty('--bgimage', getCookieValue('bgimage'));
+document.documentElement.style.setProperty('--alter-color', getCookieValue('alter'));
+
+let popupexists = false;
+
+function showPopup() {
+    if (!popupexists){
+
+        popupexists = true;
+
+        const popup = document.createElement("div");
+        popup.className = "popup";
+
+        popup.style.position = "absolute";
+        popup.style.top = "50%";
+        popup.style.left = "50%";
+        popup.style.transform = "translate(-50%, -50%)";
+        popup.style.zIndex = "100";
+        popup.style.backgroundColor = "var(--main-color)";
+        popup.style.transition = "all ease-in-out 0.5s";
+        popup.style.borderRadius = "var(--set-round)";
+        popup.style.boxShadow = "var(--main-color)";
+        popup.style.maxHeight = "60vh";
+        popup.style.maxWidth = "80vw";
+        popup.style.minWidth = "60vw";
+        popup.style.fontSize = "xx-small";
+        popup.style.overflowY = "scroll";
+
+        const popupContent = `
+        <div style="width: 100%;">
+            <p>leave blank for defaults - if changed to an improper color, it may not work as intended.</p>
+            <p style="font-size: x-small; margin-top: 0; padding-top: 0;">Sorry for any issues; it's all based around cookies
+                and they interact differently with each browser.</p>
+            <p style="display: inline-block; margin-right: 1vw;">Main color -</p><input placeholder="rgb(177, 85, 100)" id="button1"><br>
+            <p style="display: inline-block; margin-right: 1vw;">Background color -</p><input placeholder="black" id="button2"><br>
+            <p style="display: inline-block; margin-right: 1vw;">Alt color -</p><input placeholder="transparent" id="button3"><br>
+            <p style="display: inline-block; margin-right: 1vw;">accent color -</p><input placeholder="black" id="button7"><br>
+            <p style="display: inline-block; margin-right: 1vw;">Text color -</p><input placeholder="white" id="button4"><br>
+            <p style="display: inline-block; margin-right: 1vw;">background image -</p><input placeholder="none" id="button6"><br>
+            <p>the image background deppends on the image link and how your browser uses them</p>
+            <p>dont worry it auto saves</p><br>
+            <button id="button">Delete cookies</button>
+            <button id="button5">close</button>
+        </div>
+        `;
+        popup.innerHTML = popupContent;
+        document.body.appendChild(popup);
+
+        const button = document.getElementById('button');
+        const button1 = document.getElementById('button1');
+        const button2 = document.getElementById('button2');
+        const button3 = document.getElementById('button3');
+        const button4 = document.getElementById('button4');
+        const button6 = document.getElementById('button6');
+        const button7 = document.getElementById('button7');
+
+        button.addEventListener('click', cookieKill);
+
+        function cookieKill() {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i];
+                const eqPos = cookie.indexOf('=');
+                const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;';
+            }
+
+            button1.value = "";
+            button2.value = "";
+            button3.value = "";
+            button4.value = "";
+            button6.value = "";
+            button7.value = "";
+
+            document.documentElement.style.setProperty('--main-color', 'rgb(177, 85, 100)');
+            document.documentElement.style.setProperty('--bg-color', 'black');
+            document.documentElement.style.setProperty('--set-color', 'transparent');
+            document.documentElement.style.setProperty('--main-text-color', 'white');
+            document.documentElement.style.setProperty('--bgimage', '');
+            document.documentElement.style.setProperty('--alter-color', 'black');
+        }
+
+        button1.value = getCookieValue('main-color');
+        button2.value = getCookieValue('bg-color');
+        button3.value = getCookieValue('set-color');
+        button4.value = getCookieValue('main-text-color');
+        button6.value = getCookieValue('bgimage');
+        button7.value = getCookieValue('alter');
+
+        button1.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--main-color', e.target.value);
+            document.cookie = "main-color=" + e.target.value;
+        });
+        button2.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--bg-color', e.target.value);
+            document.cookie = "bg-color=" + e.target.value;
+        });
+        button3.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--set-color', e.target.value);
+            document.cookie = "set-color=" + e.target.value;
+        });
+        button4.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--main-text-color', e.target.value);
+            document.cookie = "main-text-color=" + e.target.value;
+        });
+        button6.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--bgimage', "url("+e.target.value+")");
+            document.cookie = "bgimage=" + e.target.value;
+        });
+        button7.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--alter-color', e.target.value);
+            document.cookie = "alter=" + e.target.value;
+        });
+        const deleteButton = document.getElementById("button5");
+        deleteButton.addEventListener("click", () => {
+            document.body.removeChild(popup);
+            popupexists = false;
+        });
+    }
+}
+</script>

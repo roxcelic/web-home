@@ -1,0 +1,145 @@
+---
+import Theme from '../comp/theme.astro';
+---
+<div class="banner-left" id="text-c">
+    <div style="width: 100%;opacity: var(--songbox-op);transition: all ease-in-out 0.3s" >
+        <div style="display: inline; float: left; padding: 1vh;">&lt;3</div>
+        <div style="display: inline; float: right; padding: 1vh;">Ɛ&gt;</div>
+        <div class="bar" style="margin-bottom:1vh;"/>
+        <div style="width: 5vh;height:
+                5vh;margin:auto;
+                border-radius:2.5vh;
+                background-image: 
+                url('https://avatars.githubusercontent.com/u/157179472?v=4');
+                background-size:cover;" 
+            />
+        <div class="bar" style="margin-top:1vh;"/>
+        <div class="music">
+            <p id="curr" />
+            <p id="song" />
+            <a id="link"><div id="image"></div></a>
+        </div>
+        <div class="bar"/>
+        <p>a countdown until the last second im legally obligated to go to high school</p>
+        <p>21/06/2024 or for you americans 06/21/2024</p>
+        <div class="timer">
+            <div class="item">
+                <p>days</p>
+                <p id="days">00</p>
+            </div>
+            <div class="item">
+                <p>hours</p>
+                <p id="hours">00</p>
+            </div>
+            <div class="item">
+                <p>minutes</p>
+                <p id="minutes">00</p>
+            </div>
+            <div class="item">
+                <p>seconds</p>
+                <p id="seconds">00</p>
+            </div>
+        </div>
+        <p><div id="free" /></p>
+        <div class="bar"/>
+        <p>SOCIALS</p>
+        <p>----</p>
+        <p>
+            <a href="https://discord.com">discord - roxcelic</a><br>
+            <a href="https://github.com/roxcelic">github - roxcelic</a><br>
+            <a href="https://pin.it/By7qa8ImI">pinterest - roxcelic</a><br>
+            <a href="https://stats.fm/roxangel">stats fm - roxangel</a><br>
+            <a href="https://twitter.com/_roxangel_">twitter - _roxangel_</a><br>
+            <a href="https://www.tumblr.com/roxcelic">tumblr - roxcelic</a><br>
+            <a href="https://www.instagram.com/_roxangel_/">instgram - _roxangel_</a><br>
+            <a href="https://open.spotify.com/user/onyc3nppnjac08vatfd8uulav?si=3798eba02c524532">spotify - roxie</a><br>
+            @roxcelic@fedi.on-a-ps4.lol<br>
+            roxie@roxcelic.love
+        </p>
+        <p>----</p>
+        <div class="bar"/>
+        <Theme />
+        <div class="bar"/>
+        <div style="display: inline; float: left; padding: 1vh; ">&lt;3</div>
+        <div style="display: inline; float: right; padding: 1vh;">Ɛ&gt;</div>
+    </div>
+</div>
+
+<script is:inline>
+	const userName = 'roxcelic';
+
+    const apiKey = '3dcf918393b09a296cdf261dea478a1f';
+
+    let images = document.getElementById("image");
+
+    let song = document.getElementById("song");
+
+    let curr = document.getElementById("curr");
+
+    let x = setInterval(function(){
+	    music();
+    },1000);
+
+    function music(){
+	    fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${userName}&api_key=${apiKey}&format=json`)
+	  	    .then(response => response.json())
+	  	    .then(data => {
+			    let track = data.recenttracks.track[0];
+			    if (track['@attr'] && track['@attr']['nowplaying']) {
+			    let url = track.url;
+			    let image = track.image[3]['#text'];
+		  	    let songName = track.name;
+		  	    let artistName = track.artist['#text'];
+			    song.innerHTML = (`${songName} - ${artistName}`);
+			    curr.innerHTML = ('roxie is currently listening to:');
+			    images.style.width="10vh";
+			    images.style.height= "10vh";
+			    images.style.backgroundImage=`url(${image})`;
+		    } else {
+			    song.innerHTML = ('roxie is currently not listening too or watching anything');
+			    curr.innerHTML = ('')
+			    images.style.width="0vh";
+			    images.style.height= "0vh";
+			    images.style.backgroundImage="";
+			    images.style.border = "";
+		    }
+  	    })
+  	    .catch(error => {
+		    console.log('Error fetching data from Last.fm:', error);
+  	    });
+    }
+    function timer(id1, id2, id3, id4, id5, date, message){
+        let html_days = document.getElementById(id1);
+        let html_hours = document.getElementById(id2);
+        let html_minutes = document.getElementById(id3);
+        let html_seconds = document.getElementById(id4);
+        let html_free = document.getElementById(id5);
+
+        let x3 = setInterval(function(){
+            let now = new Date().getTime();
+            let distance = date - now;
+        
+            if (distance > 0){
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                html_days.innerHTML = days
+                html_hours.innerHTML = hours
+                html_minutes.innerHTML = minutes
+                html_seconds.innerHTML = seconds
+            } if (distance = 0 || distance < 0){
+                html_days.innerHTML = 0
+                html_hours.innerHTML = 0
+                html_minutes.innerHTML = 0
+                html_seconds.innerHTML = 0
+                html_free.innerHTML = (message)
+            }
+        },1000);
+    }
+
+    music();
+    let countDownDate = new Date(Date.UTC (2024, 5, 21, 14, 55, 0)).getTime();
+    timer("days","hours","minutes","seconds","free",countDownDate,"im free?");
+</script>

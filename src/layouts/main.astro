@@ -46,3 +46,22 @@ import '../res/media.css'
 		</div>
     </body>
 </html>
+<script>
+	async function fetchDataFromWorker() {
+    try {
+      const response = await fetch("https://api.roxcelic.love");
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Data from Cloudflare Worker:", data);
+      } else {
+        console.error("Error fetching data from Cloudflare Worker:", response.status);
+      }
+    } catch (error) {
+      console.error("An error occurred while fetching data:", error);
+    }
+  }
+  
+  // Call the function to fetch data
+  fetchDataFromWorker();
+  
+</script>

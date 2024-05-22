@@ -1,12 +1,19 @@
 ---
+import Layout from '../layouts/astro/main.astro'
+const AllPosts = await Astro.glob('../pages/posts/*md');
 import Link from '../comp/link.astro';
-const allPosts = await Astro.glob('../pages/posts/*md');
-import Layout from '../layouts/main.astro';
 ---
-<Layout title="blog" desc='ill just be using this to vent :3'>
-    haha, im only joking. Ill keep yall informed of my silly and fun activities i do all the time<br><br>
-    (i dont do much i get distractedreally fast)<br><br>
-    but anyways, ENJOY!<br>
-    <p style="font-size: xx-small;">blow are links :P</p>
-    {allPosts.map((post) => <Link url={post.url} title={post.frontmatter.title} dates={post.frontmatter.pubDate} desc={post.frontmatter.desc} />)}
+<Layout desc='Im total not gonna just use this page to vent...' title='blog'>
+    <h2>Hey!</h2>
+    <p style="margin-bottom: 5vh;">
+        Welcome to my blog!<br>
+        Here, I will post some very stupid and silly things for y'all to see!
+    </p>
+    <p>
+        For more important blog layouts, I'll use one that resembles the main page,
+        but for just random fun things, it'll be more of a blank layout. Simple and fun.
+    </p>
+    <div style="display: inline-block; width:80%;">
+        {AllPosts.map((post) => <Link url={post.url} title={post.frontmatter.title} dates={post.frontmatter.upDate} writeDate={ post.frontmatter.writeDate } desc={post.frontmatter.desc} />)}
+    </div>
 </Layout>

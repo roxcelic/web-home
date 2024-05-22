@@ -1,0 +1,26 @@
+---
+const { url, func, id2, id3, text, text2 } = Astro.props;
+---
+<div class="showoffbrick" style={ url } onclick={ func }>
+    <div class="showoffhide">
+        <div class="showoffcenter" style={ url } id={ id2 }/>
+        <div class="showoffcover" id={ id3 }>
+            <h3>{ text }</h3>
+            <p>{ text2 }</p>
+        </div>
+    </div>
+</div>
+<script is:inline>
+    function press(id2, id3){
+        let el2 = document.getElementById(id2);
+        let el3 = document.getElementById(id3);
+        if(el2.style.opacity != "0"){
+            el3.style.height = `100%`;
+            el2.style.opacity = "0";
+        }
+        else{
+            el3.style.height = "0px";
+            el2.style.opacity = "1";
+        }
+    }
+</script>

@@ -7,21 +7,18 @@ interface Props {
 const { desc } = Astro.props;
 const { title } = Astro.props;
 
-import Menu from '../comp/bar.astro'
-import SideBar from '../comp/sidemenu.astro'
-
-import '../res/style.css'
-import '../res/base.css'
-import '../res/media.css'
+import '../res/css/style.css'
+import '../res/css/extra.css'
+import '../res/css/base.css'
 ---
 
 <!doctype html>
-<html lang="en" onkeydown="return myKeyPress(event)">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={desc}/>
+		<meta name="description" content={ desc }/>
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="https://roxcelic.love/images/icon.png">
+		<link rel="icon" type="image/x-icon" href="../../icon.png">
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,20 +27,9 @@ import '../res/media.css'
 
 
 		<meta name="generator" content={Astro.generator} />
-		<title id="title">{title}</title>
+		<title id="title">{ title }</title>
 	</head>
-    <body id="text-c">
-		<SideBar />
-        <Menu/>
-		<div id="info">
-			<p style="margin-bottom: 16vh;">{desc}</p>
-		</div>
-		<div id="main">
-			<slot/>
-		</div>
-		<div id="holt">
-			<div class="bar" id="holt2"/>
-		</div>
-		<div class="bottom" />
-    </body>
+	<body>
+		<slot />
+	</body>
 </html>

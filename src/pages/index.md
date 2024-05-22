@@ -1,12 +1,22 @@
 ---
-layout: ../layouts/mainmd.astro
-title: 'index'
-desc: 'live laugh love, HA I PUT IT IN MY HOME'
+layout: '../layouts/markdown/mainmd.astro'
+desc: the intro page to my site!
+title: home
 ---
-hii, im roxie or angel you choose really
+# WELCOME
 
-and I'm kinda just doing whatever I do, I'm not sure where I want to go or how for that matter. But I know a lot will be changing for me in almost 70 days now
+This is my odd little thing. Being honest, I sink way too much time into making, and then remaking, and then remaking my website.
+With this version, I'm hoping I have made it well enough to keep me occupied for a while.
+But enough about me, behold me!
 
-so thats kinda big, and I think what I want to do most is have fun and share that with everyone. Please enjoy your time at my website I try to keep it interesting
+What's up with this website, you might be thinking? Why does it keep changing?
+(Other than me remaking it) the website changes which card it shows below this, and most of said cards display data
+taken from my own personal [API](https://github.com/roxcelic/api). Using a Cloudflare worker, I can display data I normally cannot.
+Like what I'm currently listening to, my Spotify username and profile picture, my top Spotify pinned playlist, and the coolest, in my opinion,
+embed the playlist of the song I'm currently listening to below it! You can read more about this website and the API on my blog.
+But for now...
 
-but if not thats up to you ^^
+## ENJOY
+
+Also, please check out the [credits](./credits/) page<br>
+and if you need reading assistance check out [this](./simple/)

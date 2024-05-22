@@ -1,0 +1,33 @@
+---
+interface Props {
+	title: string;
+    desc: string;
+}
+
+const { desc } = Astro.props;
+const { title } = Astro.props;
+
+import Title from '../../comp/title.astro'
+import Cards from '../../comp/cards.astro'
+import Footer from '../../comp/foot.astro'
+import Image from '../../comp/image.astro'
+import Theme from '../../comp/theme.astro'
+
+import Layout from '../full.astro'
+---
+<Layout desc={ desc } title={ title }>
+	<contents>
+		<Title
+			
+			/>
+		<Image />
+		<main>
+			<div class="fullcontent">
+				<slot />
+			</div>
+			<Cards/>
+			<Theme/>
+			<Footer/>
+		</main>
+	</contents>
+</Layout>

@@ -1,0 +1,56 @@
+<div class="parent">
+    <div class="child" id="item1" style="background-image: linear-gradient(to right, var(--spotify-color1), var(--spotify-color2));">
+        <h2>spotify</h2>
+        <div class="icon" id="spotifyicon"></div>
+        <div id="spotifydata"></div>
+        <iframe id="main_playlist" style="border-radius:12px" src="" width="100%" height="352" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="child" id="item2" style="background-color: var(--lastfm-color);">
+        <h3>roxie is currently listening too</h3>
+        <div class="icon" id="currenticon"></div>
+        <div id="currentdata"></div>
+        <p id="albumname">on album: </p>
+        <iframe id="albumembed" style="border-radius:12px" src="https://open.spotify.com/embed/album/" width="100%" height="352" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="child" id="item3" style="background-color: var(--github-color);">
+        <h2>github</h2>
+        <div class="icon" style="background-image: url('https://github.com/roxcelic.png');"></div>
+        <div class="lineline" style="margin-top: 1.5vh;"></div>
+    </div>
+    <div class="child" id="item4">
+        <p>a countdown until the last second im legally obligated to go to high school</p>
+        <p>21/06/2024 or for you americans 06/21/2024</p>
+        <div class="timer">
+            <div class="item">
+                <p>days</p>
+                <p id="days">00</p>
+            </div>
+            <div class="item">
+                <p>hours</p>
+                <p id="hours">00</p>
+            </div>
+            <div class="item">
+                <p>minutes</p>
+                <p id="minutes">00</p>
+            </div>
+            <div class="item">
+                <p>seconds</p>
+                <p id="seconds">00</p>
+            </div>
+        </div>
+        <p id="free"></p>
+        <div class="lineline"></div>
+    </div>
+</div>
+<script src="../res/js/alt.js"></script>
+<style>
+    .timer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .timer .item{
+        flex-grow: 1;
+        text-align: center;
+    }
+</style>

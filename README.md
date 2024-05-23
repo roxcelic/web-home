@@ -1,11 +1,20 @@
-# HEY
+# hiii,
 
-welcome to the repo for my website, this ones the newest addition in a long line of website iterations, so please
+This is the newest version of my site, and I'm personally really happy with this one. I think it's going to stay for a long while. This version of the site uses APIs and other really cool JS things to give the most user-based experience, and I will try my hardest to fix every bug as soon as possible. This site also makes use of Astro tech that I had been somewhat aware of, but I had no clue how to use. For example, the sites now order descendingly. I have also made use of my OneDrive subscription, and the items in the `fun` section have their images hosted on OneDrive. This will hopefully save on load time and space on the site's repo! This site also allows for deeper integration between it and my own personal social medias!
 
-## enjoy!
+# thanks for listening!
 
 ---
-* the chages for this commit are:
+* the changes for version 1.1.02 are:
+    - added a site version system (well kinda just made use of the one given to me)
+    - fixed an issue where the footer text would incorrectly align itself
+    - added a post explaining the site version system
+    - updated the projects README.md
+    - fixed an issue where themes would not apple to other pages
+    - added more detail to the conditions of themes
+    - updated the site links in the astro.config.mjs file to work indepndently on the domains
+
+* the chages for version 1.1.01 are:
     - change the back button in 'empty' blog posts to take you to ../../blog/ not ../blog/ so now there is no longer a 404
     - removed the console.log in the gethub function so you no longer get those messages in the console
     - fixed a css styling issue where if the screen was smaller than 400px the 'card' class would improperly size

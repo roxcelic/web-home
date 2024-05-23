@@ -18,9 +18,12 @@ import Hfa from '../comp/hf.astro'
         </div>
     </div>
 
-    <h3 style="text-align: center;">Below is a set of my hyperfixations, click on them! <3<br>-----</h3>
+    <h3 style="text-align: center;">Below is a set of my hyperfixations, click on them! <3<br>
+        only 4 will appear at a time
+        <br>-----
+    </h3>
     <p style="font-size: small;text-align: center;">These images are embedded using OneDrive, so you may need to refresh for the desired effect.</p>
-    <div style="margin-bottom: 10vh;text-align: center;">
+    <div style="margin-bottom: 10vh;text-align: center;" id="hf">
         <Hfa
             url="background-image: url('https://onedrive.live.com/embed?resid=3A227222AA79EEC4%21126303&authkey=%21AAcMjZsU8B46JbM&height=256');"
             func="press('el1-1','el1-2')"
@@ -117,5 +120,35 @@ import Hfa from '../comp/hf.astro'
             text="rare americans"
             text2="Their arch-rival is common Europeans"
         />
+        <Hfa
+            url="background-image: url('https://onedrive.live.com/embed?resid=3A227222AA79EEC4%21126563&authkey=%21ABimlh2NFff-Omg&width=124&height=133');"
+            func="press('el13-1','el13-2')"
+            id2="el13-1"
+            id3="el13-2"
+            text="lemon demon"
+            text2="his songs always cheer me up and are honestly just amazing"
+        />
     </div>
+    <script is:inline>
+        document.addEventListener("DOMContentLoaded", function() {
+            const parent = document.getElementById('hf');
+            const children = Array.from(parent.getElementsByClassName('showoffbrick'));
+
+            const totalChildren = children.length;
+
+            if (totalChildren <= 4) {
+                children.forEach(child => child.style.display = 'inline-block');
+            } else {
+                const selectedIndices = new Set();
+                while (selectedIndices.size < 4) {
+                const randomIndex = Math.floor(Math.random() * totalChildren);
+                selectedIndices.add(randomIndex);
+                }
+
+                selectedIndices.forEach(index => {
+                children[index].style.display = 'inline-block';
+                });
+            }
+        });
+    </script>
 </Layout>

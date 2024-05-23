@@ -7,10 +7,6 @@ export async function gethub(host){
         const data = await response.json();
 
         data.forEach(v => {
-            console.log("v.name = "+ v.name);         
-            console.log("v.description = "+v.description);           
-            console.log("v.html_url = "+v.html_url);
-
             /**name */
             let name = document.createElement("p");
             name.textContent = v.name;

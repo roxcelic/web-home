@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/astro/main.astro'
-const AllPosts = await Astro.glob('../pages/posts/*md');
 import Link from '../comp/link.astro';
+
+import { getSortedPosts } from '../lib/posts';
+const posts = getSortedPosts();
 ---
 <Layout desc='Im total not gonna just use this page to vent...' title='blog'>
     <h2>Hey!</h2>
@@ -14,6 +16,6 @@ import Link from '../comp/link.astro';
         but for just random fun things, it'll be more of a blank layout. Simple and fun.
     </p>
     <div style="display: inline-block; width:80%;">
-        {AllPosts.map((post) => <Link url={post.url} title={post.frontmatter.title} dates={post.frontmatter.upDate} writeDate={ post.frontmatter.writeDate } desc={post.frontmatter.desc} />)}
+        {posts.map((post) => <Link url={post.url} title={post.title} dates={post.upDate} writeDate={ post.writeDate } desc={post.desc} />)}
     </div>
 </Layout>

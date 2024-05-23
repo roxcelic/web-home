@@ -34,7 +34,7 @@ button{
     color: white;
     background-color: var(--main-background);
     border-radius: 5px;
-    border-color: #7c001f;
+    border-color: var(--main-color);
 }
 ::-webkit-scrollbar {
     width: 10px;

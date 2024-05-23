@@ -98,33 +98,33 @@ contents{
             border: 2px solid var(--border-color);
         }
         
+        /*the heart of the cards*/
         .parent {
             display: flex;
             flex-grow: 1;
             background-color: transparent;
             flex-wrap: wrap;
-
+        }
+        .child {
+            display: none;
+            padding: 1vh;
+            opacity: var(--global-opacity);
+            margin: var(--global-padding);
+            flex: 1;
+            overflow: hidden;
+            overflow-y: scroll;
+            max-height: 600px;
+            background-color: var(--main-background);
+            box-sizing: border-box;
+            border: 2px solid var(--border-color);
+            min-width: 400px;
+        }        
+        @media (max-width: 400px) {
             .child {
-                display: none;
-                padding: 1vh;
-                opacity: var(--global-opacity);
-                margin: var(--global-padding);
-                flex: 1;
-                min-width: 400px;
-                overflow: hidden;
-                overflow-y: scroll;
-                max-height: 600px;
-                background-color: var(--main-background);
-                box-sizing: border-box;
-                border: 2px solid var(--border-color);
-            }
-
-            @media (max-width: 400px) {
-                .child {
-                    width: 100%;
-                }
+                min-width: 100%;
             }
         }
+        
         /*this is just the bottom of the page*/
         footer{
             opacity: var(--global-opacity);

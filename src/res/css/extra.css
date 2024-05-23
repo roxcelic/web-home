@@ -16,7 +16,7 @@
 }
 .showoffbrick{
     transition: all ease-in-out 0.3s;
-    display: inline-block;
+    display: none;
     border: 2px solid white;
     height: 20vh;
     width: 20vh; 

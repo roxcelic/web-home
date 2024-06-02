@@ -5,20 +5,17 @@ desc: a simplified version of my web pages
 ---
 # [home](../)
 
-    # WELCOME
+    # Hiii,
 
-    This is my odd little thing. Being honest, I sink way too much time into making, and then remaking, and then remaking my website.
-    With this version, I'm hoping I have made it well enough to keep me occupied for a while.
-    But enough about me, behold me!
+    If you're here, you must have at least heard of me, right? Well, if you haven't, I'm a weirdo who spends her time doing morally questionable things with computers—less in the "bad bad" morally questionable and more in the "why the `%$£%` are you doing this" questionable. For example, I made a Python and JS terminal thing (which is mostly dead now) just because—the Python one even had plugins!
 
-    What's up with this website, you might be thinking? Why does it keep changing?
-    (Other than me remaking it) the website changes which card it shows below this, and most of said cards display data
-    taken from my own personal [API](https://github.com/roxcelic/api). Using a Cloudflare worker, I can display data I normally cannot.
-    Like what I'm currently listening to, my Spotify username and profile picture, my top Spotify pinned playlist, and the coolest, in my opinion,
-    embed the playlist of the song I'm currently listening to below it! You can read more about this website and the API on my blog.
-    But for now...
+    Enough about me, behold me!
+
+    So, I'm a 16-year-old gal who is, what I like to joke, a `technomancer` (yes, I stole that from Regular Show; what are you gonna do?) Despite the name, I'm actually really good at breaking tech—just check out my A12 for that, lmao. I use she/they pronouns, and I'm aiming to get into a game development college sometime in the near future. Yeah, it's kinda scary that I'm going to college, but it was bound to happen eventually, right? Anyways...
 
     ## ENJOY
+
+    Also, please check out the [credits](./credits/) page.
 
     Also, please check out the [credits](./credits/) page
 

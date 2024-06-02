@@ -4,8 +4,17 @@ This is the newest version of my site, and I'm personally really happy with this
 
 # thanks for listening!
 
+the log:
 ---
-* the changes for version 1.1.02 are:
+* the changes for verison `1.1.03` are:
+    - added lemon demon to credits for the hf block
+    - updated simple.md to match with index.md
+    - added a blog post about my phone and cuson roms [My relationship with custom roms](https://roxcelic.love/posts/post0005/)
+    - added a left align blog post style for the main posts
+    - added a comments section to 'blank' style blog posts
+    - added a line to blog post 0002 saying all artists are amazing [Music](https://roxcelic.love/posts/post0002/)
+
+* the changes for version `1.1.02` are:
     - added a site version system (well kinda just made use of the one given to me)
     - fixed an issue where the footer text would incorrectly align itself
     - added a post explaining the site version system
@@ -14,15 +23,20 @@ This is the newest version of my site, and I'm personally really happy with this
     - added more detail to the conditions of themes
     - updated the site links in the astro.config.mjs file to work indepndently on the domains
 
-* the chages for version 1.1.01 are:
-    - change the back button in 'empty' blog posts to take you to ../../blog/ not ../blog/ so now there is no longer a 404
-    - removed the console.log in the gethub function so you no longer get those messages in the console
-    - fixed a css styling issue where if the screen was smaller than 400px the 'card' class would improperly size
-    - made it so on the [fun!](https://roxcelic.love/hf) page it only displays 4 of the 'hf' cards
-    - removed the id 'title' from the title element
-    - added an update to the blog post [tour](https://roxcelic.love/posts/post0001/)
-    - added an extra domain for the site to be visited on [https://site.eatcat.monster](https://site.eatcat.monster) for funny school reasons
-    - added a lemon demon hf block
-    - updated the [home](https://roxcelic.love)'s text content
-    - added a post organising script for the blog posts
-    - added a new post which is a remake of my old exam time-table post
+<details>
+  <summary>Click for expanded changelist</summary>
+  <p>the changes for version <code>1.1.01</code> are:</p>
+  <ul>
+    <li>Change the back button in 'empty' blog posts to take you to ../../blog/ not ../blog/ so now there is no longer a 404</li>
+    <li>Removed the console.log in the gethub function so you no longer get those messages in the console</li>
+    <li>Fixed a CSS styling issue where if the screen was smaller than 400px the 'card' class would improperly size</li>
+    <li>Made it so on the <a href="https://roxcelic.love/hf">fun!</a> page it only displays 4 of the 'hf' cards</li>
+    <li>Removed the id 'title' from the title element</li>
+    <li>Added an update to the blog post <a href="https://roxcelic.love/posts/post0001/">tour</a></li>
+    <li>Added an extra domain for the site to be visited on <a href="https://site.eatcat.monster">https://site.eatcat.monster</a> for funny school reasons</li>
+    <li>Added a Lemon Demon hf block</li>
+    <li>Updated the <a href="https://roxcelic.love">home</a>'s text content</li>
+    <li>Added a post organizing script for the blog posts</li>
+    <li>Added a new post which is a remake of my old exam time-table post</li>
+  </ul>
+</details>

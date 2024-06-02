@@ -17,6 +17,7 @@ title: credits
     - Scott Pilgrim Takes Off icon, Netflix
     - BoyWithUke album cover, BoyWithUke
     - Rare Americans album cover, Rare Americans
+    - lemon demon icon, Neil
 * embeds
     - Spotify songs and albums are embedded via Spotify
     - Images are embedded via OneDrive

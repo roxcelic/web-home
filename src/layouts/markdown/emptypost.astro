@@ -6,9 +6,8 @@ import Layout from '../full.astro'
 <Layout desc={ frontmatter.desc } title={ frontmatter.title }>
 	<a href="../../blog/"><h1>back</h1></a>
     <slot/>
-    <h2 onclick="fullsize('comments','text')">comments</h2>
-    <p id="text"/>
-    <div id="comments">
+    <button onclick="fullsize('comments')" style="border-color: white;background-color: black;">comments</button>
+    <div id="comments" style="overflow: hidden;height:0px;">
         <script src="https://giscus.app/client.js"
         	data-repo="roxcelic/web-home"
         	data-repo-id="R_kgDOL6k6bA"
@@ -24,28 +23,13 @@ import Layout from '../full.astro'
         	crossorigin="anonymous"
         	async />
     </div>
-    <style>
-        #comments{
-            height: 0px;
-            overflow: hidden;
-            transition: all ease-in-out 0.3s;
-        }
-    </style>
     <script is:inline>
-        function fullsize(id,id2) {
+        function fullsize(id) {
             let el = document.getElementById(id);
-            let el2 = document.getElementById(id2);
             if (el.clientHeight === el.scrollHeight) {
                 el.style.height = "0px";
             } else {
-                el2.textContent = "loading...";
-                el2.style.textAlign = "center";
-                el.style.height = el.scrollHeight+"px";
-                setTimeout(function() {
-                    el.style.height = el.scrollHeight+"px";
-                    el2.textContent = "";
-                    el2.style.textAlign = "left";
-                }, 2500);  
+                el.style.height = "auto";
             }
         }
     </script>

@@ -10,6 +10,9 @@ html{
     font-weight: 400;
     font-style: normal;
 }
+pre {
+    background-color: #1a1b19 !important;
+}
 .astro-code {
     text-align: left;
 }
@@ -118,4 +121,23 @@ a {
     66.67% { border: 2px solid #99ccff; box-shadow: 5px 5px 2.5px #99ccff;}
     83.33% { border: 2px solid #ff99cc; box-shadow: 5px 5px 2.5px #ff99cc;}
     100% { border: 2px solid #ffccff; box-shadow: 5px 5px 2.5px #ffccff;}
+}
+.blogp {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.blogc {
+    flex: 1 1 49%;
+    width: 49%;
+    min-width: fit-content;
+    padding-left: 0.5%;
+}
+
+@media (max-width: 400px) {
+    .blogc {
+        flex: 1 1 100%;
+        min-width: 100%;
+    }
 }

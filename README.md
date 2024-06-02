@@ -6,6 +6,25 @@ This is the newest version of my site, and I'm personally really happy with this
 
 the log:
 ---
+* the changes for version `1.1.04`-`semi-sentient chowder` are:
+  - fixed an issue where the comments on 'empty' blog posts would not load correctly (at the cost of a smooth animtion)
+  - added new domain for the site [https://site.eatcat.monster](https://site.eatcat.monster)
+  - changed the styling for the comments on 'empty' blog posts although nothing visually has changed
+  - made the 'empty' blog post comments button an actual button
+  - changed the background of markdown code blocks to match individual code lines
+  - blog posts now have an author
+  - changed the layout of the [blog](https://roxcelic.love/blog) page
+  - added tags to my blog posts and the following tags:
+    - `school`
+    - `music`
+    - `calander`
+    - `tech`
+    - `website`
+    - `android`
+  - added a blog post depicting a rough version of my experience in highschool [Highschool...](https://roxcelic.love/posts/post0006/)
+  - added a blog post talking about how to custom rom a samsung galaxy s20 fe [How to Custom ROM a S20 FE](https://roxcelic.love/posts/post0007/)
+  - added version names just for the funnies
+
 * the changes for verison `1.1.03` are:
     - added lemon demon to credits for the hf block
     - updated simple.md to match with index.md
@@ -13,18 +32,20 @@ the log:
     - added a left align blog post style for the main posts
     - added a comments section to 'blank' style blog posts
     - added a line to blog post 0002 saying all artists are amazing [Music](https://roxcelic.love/posts/post0002/)
-
-* the changes for version `1.1.02` are:
-    - added a site version system (well kinda just made use of the one given to me)
-    - fixed an issue where the footer text would incorrectly align itself
-    - added a post explaining the site version system
-    - updated the projects README.md
-    - fixed an issue where themes would not apple to other pages
-    - added more detail to the conditions of themes
-    - updated the site links in the astro.config.mjs file to work indepndently on the domains
+    - changed the backgound styling for the 'code' class (*this addition was added on version `1.1.04` even though it was changed in version `1.1.03`*)
 
 <details>
   <summary>Click for expanded changelist</summary>
+  <p>the changes for version <code>1.1.02</code> are:</p>
+  <ul>
+    <li>added a site version system (well kinda just made use of the one given to me)</li>
+    <li>fixed an issue where the footer text would incorrectly align itself</li>
+    <li>added a post explaining the site version system</li>
+    <li>updated the projects README.md</li>
+    <li>fixed an issue where themes would not apple to other pages</li>
+    <li>added more detail to the conditions of themes</li>
+    <li>updated the site links in the astro.config.mjs file to work indepndently on the domains</li>
+  </ul>
   <p>the changes for version <code>1.1.01</code> are:</p>
   <ul>
     <li>Change the back button in 'empty' blog posts to take you to ../../blog/ not ../blog/ so now there is no longer a 404</li>

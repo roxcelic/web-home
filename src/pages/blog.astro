@@ -1,21 +1,35 @@
 ---
-import Layout from '../layouts/astro/main.astro'
+import Layout from '../layouts/full.astro'
 import Link from '../comp/link.astro';
+
+import Title from '../comp/title.astro'
+import Image from '../comp/image.astro'
 
 import { getSortedPosts } from '../lib/posts';
 const posts = getSortedPosts();
 ---
 <Layout desc='Im total not gonna just use this page to vent...' title='blog'>
-    <h2>Hey!</h2>
-    <p style="margin-bottom: 5vh;">
-        Welcome to my blog!<br>
-        Here, I will post some very stupid and silly things for y'all to see!
-    </p>
-    <p>
-        For more important blog layouts, I'll use one that resembles the main page,
-        but for just random fun things, it'll be more of a blank layout. Simple and fun.
-    </p>
-    <div style="display: inline-block; width:80%;">
-        {posts.map((post) => <Link url={post.url} title={post.title} dates={post.upDate} writeDate={ post.writeDate } desc={post.desc} />)}
-    </div>
+    <contents>
+        <Title
+        
+            />
+        <Image />
+        <main>
+            <div class="parent">
+                <div class="child" style="display:block;max-height: 500px;">
+                    <h2>Hey!</h2>
+                    <p style="margin-bottom: 5vh;">
+                        Welcome to my blog!<br>
+                        Here, I will post some very stupid and silly things for y'all to see!
+                        <br><br>
+                        enjoy my semi-sentient chowder
+                    </p>
+                    <div style="width: 100%; height: 3px; background-color: white;margin:0;"/>
+                    <div class="blogp">
+                        {posts.map((post) => <Link url={post.url} title={post.title} dates={post.upDate} auth={ post.auth } desc={post.desc} writedate={ post.writeDate} tags={ post.tags}/>)}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </contents>
 </Layout>

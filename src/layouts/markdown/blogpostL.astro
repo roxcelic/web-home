@@ -18,14 +18,12 @@ import Layout from '../full.astro'
 					- { frontmatter.upDate } - { frontmatter.title } -<br>
 					- { frontmatter.desc } -<br>
 					-written on { frontmatter.writeDate }-<br>
-					{
+					- {
 						frontmatter.tags && 
 						<span>
-							<code>
-								{frontmatter.tags.join(" | ")}
-							</code>
+							{frontmatter.tags.join(", ")}
 						</span>
-					}
+					} -
 				</p>
 			</div>
             <div class="parent">

@@ -4,8 +4,37 @@ This is the newest version of my site, and I'm personally really happy with this
 
 # thanks for listening!
 
+* version
+  - `[1.105]`
+  - `[strawberry pie]`
+  - This version makes the website feel much more me, by changing how things look slightly
+
 the log:
 ---
+* the changes for version `1.1.05`-`strawberry pie` are:
+  - changed how tags are displayed
+  - added a info page to display webpage information to the user [info](https://roxcelic.love/info)
+  - added a twelve forever hf block
+  - added tweleve forever to the credits
+  - updated the credits for Neil Cicierega
+  - updated the back button on the credits page to take you to `../` rather than `https://roxcelic.love`
+  - added a description to the github repo `the github repo for my little brain moments`
+  - added extra text to the timer card ` Im not sure whe...`
+  - added a link to my last fm on the 'roxie' page
+  - added some small banter text to some subjects under `more about me` on the roxie page
+  - changed how `icon.png` looks
+  - changed how `88-31.png` looks
+  - removed:
+    - `/pfp(512).png`
+    - `pfp/pfp(256).png`
+    - `pfp/pfp(128).png`
+    - `pfp/pfp(64).png`
+  - changed `[icon.png]` to `[icon.svg]`
+  - changed `[88-31.png]` to `[88-31.svg]`
+  - changed the readme to show the current version info
+  - added a version descirption, can be seen in the repo readme or the [info](https://roxcelic.love/info) page 
+    - (the page readme only shows the description of the current version)
+
 * the changes for version `1.1.04`-`semi-sentient chowder` are:
   - fixed an issue where the comments on 'empty' blog posts would not load correctly (at the cost of a smooth animtion)
   - added new domain for the site [https://site.eatcat.monster](https://site.eatcat.monster)
@@ -25,17 +54,18 @@ the log:
   - added a blog post talking about how to custom rom a samsung galaxy s20 fe [How to Custom ROM a S20 FE](https://roxcelic.love/posts/post0007/)
   - added version names just for the funnies
 
-* the changes for verison `1.1.03` are:
-    - added lemon demon to credits for the hf block
-    - updated simple.md to match with index.md
-    - added a blog post about my phone and cuson roms [My relationship with custom roms](https://roxcelic.love/posts/post0005/)
-    - added a left align blog post style for the main posts
-    - added a comments section to 'blank' style blog posts
-    - added a line to blog post 0002 saying all artists are amazing [Music](https://roxcelic.love/posts/post0002/)
-    - changed the backgound styling for the 'code' class (*this addition was added on version `1.1.04` even though it was changed in version `1.1.03`*)
-
 <details>
   <summary>Click for expanded changelist</summary>
+  <p>the changes for version <code>1.1.03</code> are:</p>
+  <ul>
+    <li>added lemon demon to credits for the hf block</li>
+    <li>updated simple.md to match with index.md</li>
+    <li>added a blog post about my phone and cuson roms <a href="https://roxcelic.love/posts/post0005/">My relationship with custom roms</a></li>
+    <li>added a left align blog post style for the main posts</li>
+    <li>added a comments section to 'blank' style blog posts</li>
+    <li>added a line to blog post 0002 saying all artists are amazing <a href="https://roxcelic.love/posts/post0002/">Music</a></li>
+    <li>changed the backgound styling for the 'code' class (*this addition was added on version `1.1.04` even though it was changed in version `1.1.03`*)</li>
+  </ul>
   <p>the changes for version <code>1.1.02</code> are:</p>
   <ul>
     <li>added a site version system (well kinda just made use of the one given to me)</li>

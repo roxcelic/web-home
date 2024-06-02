@@ -3,7 +3,7 @@ layout: '../layouts/full.astro'
 desc: for everything and everyone that deserves them
 title: credits
 ---
-# [back](https://roxcelic.love)
+# [back](../)
 * images used [here](https://roxcelic.love/hf)
     - Goosebumps icon, Scholastic Corporation
     - Eevee icon, Nintendo
@@ -17,7 +17,8 @@ title: credits
     - Scott Pilgrim Takes Off icon, Netflix
     - BoyWithUke album cover, BoyWithUke
     - Rare Americans album cover, Rare Americans
-    - lemon demon icon, Neil
+    - lemon demon icon, Neil Cicierega
+    - tweleve forever, Netflix
 * embeds
     - Spotify songs and albums are embedded via Spotify
     - Images are embedded via OneDrive

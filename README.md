@@ -5,12 +5,15 @@ This is the newest version of my site, and I'm personally really happy with this
 # thanks for listening!
 
 * version
-  - `[1.105]`
-  - `[strawberry pie]`
-  - This version makes the website feel much more me, by changing how things look slightly
+  - `[1.1.06]`
+  - `[gunpowder]`
+  - seperates the blog from the main site, so i can add larger improvements over on it.
 
 the log:
 ---
+* the changes for version `1.1.06`-`gunpowder` are:
+  - blogs are now under a seperate domain, all of the extensive changes reflect this so it will not be logged.
+
 * the changes for version `1.1.05`-`strawberry pie` are:
   - changed how tags are displayed
   - added a info page to display webpage information to the user [info](https://roxcelic.love/info)
@@ -35,27 +38,30 @@ the log:
   - added a version descirption, can be seen in the repo readme or the [info](https://roxcelic.love/info) page 
     - (the page readme only shows the description of the current version)
 
-* the changes for version `1.1.04`-`semi-sentient chowder` are:
-  - fixed an issue where the comments on 'empty' blog posts would not load correctly (at the cost of a smooth animtion)
-  - added new domain for the site [https://site.eatcat.monster](https://site.eatcat.monster)
-  - changed the styling for the comments on 'empty' blog posts although nothing visually has changed
-  - made the 'empty' blog post comments button an actual button
-  - changed the background of markdown code blocks to match individual code lines
-  - blog posts now have an author
-  - changed the layout of the [blog](https://roxcelic.love/blog) page
-  - added tags to my blog posts and the following tags:
-    - `school`
-    - `music`
-    - `calander`
-    - `tech`
-    - `website`
-    - `android`
-  - added a blog post depicting a rough version of my experience in highschool [Highschool...](https://roxcelic.love/posts/post0006/)
-  - added a blog post talking about how to custom rom a samsung galaxy s20 fe [How to Custom ROM a S20 FE](https://roxcelic.love/posts/post0007/)
-  - added version names just for the funnies
-
 <details>
   <summary>Click for expanded changelist</summary>
+  <p>the changes for version <code>1.1.04</code>are:</p>
+  <ul>
+    <li>fixed an issue where the comments on 'empty' blog posts would not load correctly (at the cost of a smooth animtion)</li>
+    <li>added new domain for the site <a href="https://site.eatcat.monster">https://site.eatcat.monster</a></li>
+    <li>changed the styling for the comments on 'empty' blog posts although nothing visually has changed</li>
+    <li>made the 'empty' blog post comments button an actual button</li>
+    <li>changed the background of markdown code blocks to match individual code lines</li>
+    <li>blog posts now have an author</li>
+    <li>changed the layout of the <a href="https://roxcelic.love/blog">blog</a> page</li>
+    <li>added tags to my blog posts and the following tags:</li>
+      <ul>
+        <li><code>school</code></li>
+        <li><code>music</code></li>
+        <li><code>calander</code></li>
+        <li><code>tech</code></li>
+        <li><code>website</code></li>
+        <li><code>android</code></li>
+      </ul>
+    <li>added a blog post depicting a rough version of my experience in highschool <a href="https://roxcelic.love/posts/post0006/">Highschool...</a></li>
+    <li>added a blog post talking about how to custom rom a samsung galaxy s20 fe <a href="https://roxcelic.love/posts/post0007/">How to Custom ROM a S20 FE</a></li>
+    <li>added version names just for the funnies</li>
+  </ul>
   <p>the changes for version <code>1.1.03</code> are:</p>
   <ul>
     <li>added lemon demon to credits for the hf block</li>

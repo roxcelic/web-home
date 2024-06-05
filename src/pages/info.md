@@ -6,9 +6,9 @@ title: info
 # [back](../)
 
 * general info about this website,
-    - version: `[1.1.06]`
-    - version-name: `gunpowder`
-    - version-desc: seperates the blog from the main site, so i can add larger improvements over on it.
+    - version: `[1.1.07]`
+    - version-name: `redstone`
+    - version-desc: fixs and general stability improvements
     - creator: [roxcelic](https://github.com/roxcelic)
     - host: cloudflare
 
@@ -16,6 +16,7 @@ title: info
     - font: [pixelify Sans on google](https://fonts.google.com/specimen/Pixelify+Sans)
 
 * version list
+    - `[1.1.07]`-`redstone`
     - `[1.1.06]`-`gunpowder`
     - `[1.1.05]`-`strawberry pie`
     - `[1.1.04]`-`semi-sentient chowder`

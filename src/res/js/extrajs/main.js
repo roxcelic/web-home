@@ -56,7 +56,7 @@ export async function getdata_current(host){
 }
 
 export function timer(){
-    let countDownDate = new Date(Date.UTC (2024, 5, 21, 14, 55, 0)).getTime();
+    let countDownDate = new Date(Date.UTC (2024, 5, 21, 19, 00, 0)).getTime();
     timercheck("days","hours","minutes","seconds","free",countDownDate,"im free?");
 }
 

@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'fonts';
+
+html {
+    background-color: $background-color;
+    text-align: $text-alighn;
+    font-family: $font;
+    font-size: $font-size;
+    color: $primary-color;
+
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    transition: $transition;
+}

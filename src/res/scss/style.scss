@@ -1,0 +1,46 @@
+@import 'variables';
+
+#box {
+    overflow: hidden;
+    margin: auto;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#player {
+    position: relative;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.box-cas {
+    position: relative;
+    min-width: $box-width;
+    height: $box-height;
+    background-color: pink;
+    margin: 5px;
+    transition: all ease-in-out 0.3s;
+    top: 0px;
+    right: 0px;
+}
+
+#walkman {
+    width: $box-width;
+    height: $box-height;
+    background-color: transparent;
+    border: 3px solid yellow;
+    margin: 20px 0; /* Add some margin for spacing */
+}
+
+.hidden {
+    position: absolute;
+    width: $box-width;
+    height: $box-height;
+    background-color: yellow;
+    top: calc(100% + 20px); /* Position it below walkman with some spacing */
+    left: 0;
+}

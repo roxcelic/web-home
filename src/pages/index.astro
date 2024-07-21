@@ -1,54 +1,55 @@
 ---
 import Layout from '../layouts/full.astro';
-import Card from '../comp/hidden.astro';
+import Spotify from '../comp/spotify.astro';
 ---
 <Layout desc="hi" title='hi'>
-	<h1 id="title-text">
-		hi
-	</h1>
 	<div id="box">
+		<h1 id="title-text" style="width:100%;text-align: center;">
+			hi
+		</h1>
 		<div id="player">
-			<div class="box-cas" id="casette_1">
-				<p>
-					funnnn
-				</p>
-			</div>
-			<div class="box-cas" id="casette_2">
-				<p>
-					home
-				</p>
-			</div>
-			<div class="box-cas" id="casette_3">
-				<p>
-					about me
-				</p>
-			</div>
+			<div class="box-cas" id="casette_1"><p>funnnn</p></div>
+			<div class="box-cas" id="casette_2"><p>about me</p></div>
+			<div class="box-cas" id="casette_3"><p>home</p></div>	
+			<div class="box-cas" id="casette_4"><p>fedi</p></div>
+			<div class="box-cas" id="casette_5"><p>blog</p></div>
 		</div>
 		<div id="walkman" />
 		<div id="content">
+			
 			<div id="content_1">
-				<div class="red" style="background-color: green;">
-					hey<br>
-					im supposed to be pixleated?
-				</div>
-				<div class="red" style="background-color: blue;"/>				
+				<Spotify />
 			</div>
+
 			<div id="content_2">
-				<div class="red" style="background-color: yellow;"/>
-				<div class="red" style="background-color: blue;"/>				
+				<div class="red"/>
+				<div class="red"/>				
 			</div>
 			<div id="content_3">
-				<div class="red" style="background-color: pink;"/>
-				<div class="red" style="background-color: blue;"/>				
+				<div class="red"/>
+				<div class="red"/>				
+			</div>
+			<div id="content_4">
+				<div class="red"/>
+				<div class="red"/>				
+			</div>
+			<div id="content_5">
+				<div class="red">
+					<p>
+						blog
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div id="parent">
-		<div class="child" id="touch_up">up</div>
-		<div class="child" id="touch_down">down</div>
-		<div class="child" id="touch_left">left</div>
-		<div class="child" id="touch_right">right
-		</div>
-	  </div>
-	  
+	<div class="thelitch">
+		<div id="parent">
+			<div class="child" id="touch_up" style="background-image: url('../../Up.png');"/>
+			<div class="child" id="touch_left" style="background-image: url('../../Left.png');"/>
+			<div style="width: 75px;height:75px"/>
+			<div class="child" id="touch_right" style="background-image: url('../../Right.png');"/>
+			<div class="child" id="touch_down" style="background-image: url('../../Down.png');"/>
+			</div>
+		  </div>
+	</div>
 </Layout>

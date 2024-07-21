@@ -7,11 +7,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: $radius;
 }
 
 #player {
     position: relative;
-    width: 40%;
+    padding-top: 20px;
+    max-width: 50%;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -21,11 +23,15 @@
     position: relative;
     min-width: $box-width;
     height: $box-height;
-    background-color: pink;
+    background-image: url('../../../idle01.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin: 5px;
     transition: all ease-in-out 0.3s;
     top: 0px;
     right: 0px;
+    border-radius: $radius;
 }
 .box-cas *{
     display: none;
@@ -35,28 +41,37 @@
     width: $box-width;
     height: $box-height;
     background-color: transparent;
-    border: 3px solid yellow;
-    margin: 20px 0; /* Add some margin for spacing */
+    margin: 20px 0;
 }
 #content {
+    min-width: 40vh;
     width: 30vw;
     height: 22vh;
     background-color: transparent;
-    margin: 20px 0;
+    margin: auto;
 }
 .red {
-    width: 30vw;
+    background-color: $box-color;
+    min-width: 40vh;
     height: 22vh;
+    width: 30vw;
+    text-align: center;
+    border-radius: $radius;
+
     opacity: 0;
     transition: all ease-in-out 0.3s;
     position: absolute;
-    margin: auto;
     display: flex;
     flex-wrap: wrap;
 
 }
+p {
+    text-align: center;
+    width: 100%;
+}
 .red::before {
     content: '';
+    border-radius: $radius;
     position: absolute;
     top: 0;
     left: 0;
@@ -77,33 +92,110 @@
     pointer-events: none;
 }
 
-#parent {
+.thelitch {
     display: none;
-    position: fixed;
-    bottom: 10;
-    width: 50vw;
-    margin: 25vw;
-    display: block;
-    justify-content: space-between;
-    background-color: lightgray;
-    flex-wrap: wrap;
-  }
-  
-  #parent .child {
-    width: 20vw;
-    min-width: 20vw;
-    display: none;
-    flex: 1;
+    justify-content: center;
+    align-items: center; /* Center vertically */
     text-align: center;
-    padding: 10px;
-    border: 1px solid black;
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
 }
-  
+
+#parent {
+    width: 150px; /* Adjust to fit your layout */
+    height: 150px; /* Adjust to fit your layout */
+    display: grid; /* Make sure grid is displayed */
+    grid-template-areas: 
+        "up up up"
+        "left center right"
+        "down down down";
+    grid-template-rows: repeat(3, 1fr); /* Three equal rows */
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    align-items: center; /* Center items vertically */
+    justify-items: center; /* Center items horizontally */
+}
+
+/* Ensure child elements are centered in their grid cells */
+#parent .child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the image within the element */
+    width: 75px; /* Take full width of grid cell */
+    height: 75px; /* Take full height of grid cell */
+}
+#parent .child:hover {
+    animation-name: active;
+    animation-duration: 1s;
+}
+#parent .child:active {
+    animation-name: active;
+    animation-duration: 0.3s;
+}
+
+/* Background images for each child element */
+#parent .child:nth-child(1) {
+    grid-area: up;
+}
+
+#parent .child:nth-child(2) {
+    grid-area: left;
+}
+
+#parent .child:nth-child(3) {
+    grid-area: center;
+}
+
+#parent .child:nth-child(4) {
+    grid-area: right;
+}
+
+#parent .child:nth-child(5) {
+    grid-area: down;
+}
+
 @media (pointer: coarse) {
     #parent {
-        display: flex;
+        display: grid;
     }
     #parent .child {
-        display: block;
+        display: flex;
     }
+    .thelitch {
+        display: flex;
+    }
+}
+
+@keyframes active {
+    0% {opacity: 1;}
+    25% {opacity: 0.5;}
+    100% {opacity: 1;}
+}
+
+.pfp_block {
+    width: 50px;
+    height: 50px;
+    border-radius: $radius;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* Style for content */
+.content {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Style for the attached image */
+.attached_image {
+    max-width: 100%;
+    max-height: 10vh;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
 }

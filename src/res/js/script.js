@@ -18,6 +18,7 @@ var pos = 0;
 var extraTop = 13;
 var down_child = 0;
 var content = document.getElementById("content");
+var title_text = document.getElementById("title-text");
 
 cassettes.forEach(item => {
     found_cassettes.push(document.getElementById(item));
@@ -49,7 +50,7 @@ function isAbove(elem1, elem2) {
 
 
 function moveL() {
-    pos-=1;
+    pos+=1;
     found_cassettes.forEach(item => {
         let currentRight = parseInt(item.style.right) || 0;
         item.style.right = (currentRight + step) + "px";
@@ -57,7 +58,7 @@ function moveL() {
 }
 
 function moveR() {
-    pos+=1;
+    pos-=1;
     found_cassettes.forEach(item => {
         let currentRight = parseInt(item.style.right) || 0;
         item.style.right = (currentRight - step) + "px";
@@ -96,6 +97,12 @@ function checkdown() {
     }
     return -1;
 }
+function checkselect(index) {
+    const childrens = found_cassettes[index].children;
+    const childrenArray = Array.from(childrens);
+    return childrenArray[0].textContent;
+}
+
 function moveR_u() {
 
     const childrens = content.children;
@@ -121,7 +128,9 @@ function reset(){
         item.style.opacity = "0";
     });
 }
-
+function title_text_set(){
+    title_text.textContent = checkselect(pos + Math.floor(found_cassettes.length / 2));
+}
 
 let lastExecutionTime = 0;
 const throttleInterval = 250; 
@@ -139,14 +148,16 @@ function handleKeyEvent(key) {
     lastExecutionTime = currentTime;
 
     if (key === 'ArrowLeft') {
-        if (canMove && pos > -1 * Math.floor(found_cassettes.length / 2)) {
+        if (canMove && pos < Math.floor(found_cassettes.length / 2)) {
             moveL();
+            title_text_set();
         } else if (!canMove) {
             moveL_u();
         }
     } else if (key === 'ArrowRight') {
-        if (canMove && pos < Math.floor(found_cassettes.length / 2)) {
+        if (canMove && pos > -1 * Math.floor(found_cassettes.length / 2)) {
             moveR();
+            title_text_set();
         } else if (!canMove) {
             moveR_u();
         }
@@ -173,3 +184,5 @@ document.getElementById('touch_down').addEventListener('click', function() {
 document.getElementById('touch_up').addEventListener('click', function() {
     handleKeyEvent('ArrowUp');
 });
+
+title_text_set();

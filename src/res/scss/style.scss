@@ -27,6 +27,9 @@
     top: 0px;
     right: 0px;
 }
+.box-cas *{
+    display: none;
+}
 
 #walkman {
     width: $box-width;
@@ -87,6 +90,7 @@
   }
   
   #parent .child {
+    width: 20vw;
     min-width: 20vw;
     display: none;
     flex: 1;

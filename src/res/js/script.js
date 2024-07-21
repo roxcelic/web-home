@@ -3,17 +3,42 @@ var cassettes = [
     "casette_2",
     "casette_3",
 ]
+var contents = [
+    "content_1",
+    "content_2",
+    "content_3",
+]
 var found_cassettes = []
+var found_content = []
 var step = 110;
 var player = "player";
 var walkman = document.getElementById("walkman");
 var canMove = true;
 var pos = 0;
+var extraTop = 13;
+var down_child = 0;
+var content = document.getElementById("content");
 
 cassettes.forEach(item => {
     found_cassettes.push(document.getElementById(item));
 });
+contents.forEach(item => {
+    found_content.push(document.getElementById(item));
+});
 
+
+function setactivecontent(item){
+    const childrens = content.children;
+    const children2 = childrens[checkdown()].children;
+    const childrenArray = Array.from(children2);
+    childrenArray[item].style.opacity = "1";
+}
+function setunactivecontent(item){
+    const childrens = content.children;
+    const children2 = childrens[checkdown()].children;
+    const childrenArray = Array.from(children2);
+    childrenArray[item].style.opacity = "0";
+}
 function isAbove(elem1, elem2) {
     const rect1 = elem1.getBoundingClientRect();
     const rect2 = elem2.getBoundingClientRect();
@@ -48,54 +73,103 @@ function moveD() {
             const currentTop = parseInt(window.getComputedStyle(item).top, 10) || 0;
             const distanceToMove = (walkmanRect.bottom - itemRect.top) / 2;
             const newTop = currentTop + distanceToMove;      
-            item.style.top = newTop + 'px';
+            item.style.top = newTop + extraTop + 'px';
             return true; 
         }
         return false; 
     });
 }
 function moveU() {
+    reset();
+    down_child = 0;
     found_cassettes.forEach(item => {
         canMove = true;
         item.style.top = "0px";
     });
 }
+function checkdown() {
+    for (let index = 0; index < found_cassettes.length; index++) {
+        const item = found_cassettes[index];
+        if (item.style.top != "0px" && item.style.top != 0 && item.style.top != null) {
+            return index;
+        }
+    }
+    return -1;
+}
+function moveR_u() {
+
+    const childrens = content.children;
+    const children2 = childrens[checkdown()].children;
+    const childrenArray = Array.from(children2);
+
+    setunactivecontent(down_child);
+    if (down_child+1 <= childrenArray.length-1){down_child+=1;}
+    setactivecontent(down_child);
+}
+
+function moveL_u(){
+    setunactivecontent(down_child);
+    if (down_child-1 >= 0){down_child-=1;}
+    setactivecontent(down_child);
+}
+
+function reset(){
+    const childrens = content.children;
+    const children2 = childrens[checkdown()].children;
+    const childrenArray = Array.from(children2);
+    childrenArray.forEach(item => {
+        item.style.opacity = "0";
+    });
+}
+
 
 let lastExecutionTime = 0;
 const throttleInterval = 250; 
+
+
 document.addEventListener('keydown', function(event) {
-    const currentTime = Date.now();
-    if (currentTime - lastExecutionTime < throttleInterval) {
-        return;
-    }
-    lastExecutionTime = currentTime;
-    if (event.key === 'ArrowLeft') {
-        if (canMove && pos > -1 * Math.floor(found_cassettes.length / 2)) {moveL();}
-    } else if (event.key === 'ArrowRight') {
-        if (canMove && pos < Math.floor(found_cassettes.length / 2 )) {moveR();}
-    } else if (event.key === 'ArrowDown') {
-        if (canMove) {
-            moveD();
-        }
-    } else if (event.key === 'ArrowUp') {
-        moveU();
-    }
+    handleKeyEvent(event.key);
 });
-function Mover(dir){
+
+function handleKeyEvent(key) {
     const currentTime = Date.now();
     if (currentTime - lastExecutionTime < throttleInterval) {
         return;
     }
     lastExecutionTime = currentTime;
-    if (dir === 'ArrowLeft') {
-        if (canMove && pos > -1 * Math.floor(found_cassettes.length / 2)) {moveL();}
-    } else if (dir === 'ArrowRight') {
-        if (canMove && pos < Math.floor(found_cassettes.length / 2 )) {moveR();}
-    } else if (dir === 'ArrowDown') {
-        if (canMove) {
-            moveD();
+
+    if (key === 'ArrowLeft') {
+        if (canMove && pos > -1 * Math.floor(found_cassettes.length / 2)) {
+            moveL();
+        } else if (!canMove) {
+            moveL_u();
         }
-    } else if (dir === 'ArrowUp') {
+    } else if (key === 'ArrowRight') {
+        if (canMove && pos < Math.floor(found_cassettes.length / 2)) {
+            moveR();
+        } else if (!canMove) {
+            moveR_u();
+        }
+    } else if (key === 'ArrowDown' && canMove) {
+        moveD();
+        setactivecontent(0);
+    } else if (key === 'ArrowUp' && !canMove) {
         moveU();
     }
 }
+
+document.getElementById('touch_left').addEventListener('click', function() {
+    handleKeyEvent('ArrowLeft');
+});
+
+document.getElementById('touch_right').addEventListener('click', function() {
+    handleKeyEvent('ArrowRight');
+});
+
+document.getElementById('touch_down').addEventListener('click', function() {
+    handleKeyEvent('ArrowDown');
+});
+
+document.getElementById('touch_up').addEventListener('click', function() {
+    handleKeyEvent('ArrowUp');
+});

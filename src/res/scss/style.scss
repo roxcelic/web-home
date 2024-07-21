@@ -35,12 +35,71 @@
     border: 3px solid yellow;
     margin: 20px 0; /* Add some margin for spacing */
 }
-
-.hidden {
+#content {
+    width: 30vw;
+    height: 22vh;
+    background-color: transparent;
+    margin: 20px 0;
+}
+.red {
+    width: 30vw;
+    height: 22vh;
+    opacity: 0;
+    transition: all ease-in-out 0.3s;
     position: absolute;
-    width: $box-width;
-    height: $box-height;
-    background-color: yellow;
-    top: calc(100% + 20px); /* Position it below walkman with some spacing */
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.red::before {
+    content: '';
+    position: absolute;
+    top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 0, 0, 0.2) 0px,
+        rgba(255, 0, 0, 0.2) 1px,
+        rgba(0, 255, 0, 0.2) 1px,
+        rgba(0, 255, 0, 0.2) 2px,
+        rgba(0, 0, 255, 0.2) 2px,
+        rgba(0, 0, 255, 0.2) 3px
+    );
+    background-size: 100% 10px; /* Adjust the size to change line density */
+    mix-blend-mode: screen;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#parent {
+    display: none;
+    position: fixed;
+    bottom: 10;
+    width: 50vw;
+    margin: 25vw;
+    display: block;
+    justify-content: space-between;
+    background-color: lightgray;
+    flex-wrap: wrap;
+  }
+  
+  #parent .child {
+    min-width: 20vw;
+    display: none;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+}
+  
+@media (pointer: coarse) {
+    #parent {
+        display: flex;
+    }
+    #parent .child {
+        display: block;
+    }
 }

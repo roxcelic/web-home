@@ -20,7 +20,6 @@ async function fetchAndDisplayPosts() {
         const posts = await response.json();
         const nonReplies = posts.filter(post => !post.in_reply_to_id).slice(0,8);
         const contentElement = document.getElementById('content_4');
-        contentElement.innerHTML = '';
 
         nonReplies.forEach(post => {
             const postElement = document.createElement('div');

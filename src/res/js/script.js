@@ -1,11 +1,10 @@
 import { getdata_spotify } from "./extra/main";
 import { getdata_current } from "./extra/main";
+import { popup } from "./popup";
 
 const cassettes = ["casette_1","casette_2","casette_3","casette_4","casette_5"];
-const contents = ["content_1","content_2","content_3","content_4","content_5"];
 
 const foundCassettes = cassettes.map(id => document.getElementById(id));
-const foundContents = contents.map(id => document.getElementById(id));
 
 const step = 110;
 const walkman = document.getElementById("walkman");
@@ -21,12 +20,22 @@ function getChildrenArray(element) {
     return element ? Array.from(element.children) : [];
 }
 
-function setContentOpacity(index, opacity) {
+function setContentOpacity(index, display, opacity) {
     const currentContent = content.children[checkDown()];
     if (currentContent) {
         const childrenArray = getChildrenArray(currentContent);
         if (childrenArray[index]) {
-            childrenArray[index].style.opacity = opacity;
+            if (display == ""){
+                childrenArray[index].style.opacity = opacity;
+                setTimeout(() => {
+                    childrenArray[index].style.display = display;
+                }, 150);
+            } else {
+                childrenArray[index].style.display = display;
+                setTimeout(() => {
+                    childrenArray[index].style.opacity = opacity;
+                }, 150);
+            }
         }
     }
 }
@@ -117,7 +126,7 @@ function checkSelect(index) {
 }
 
 function moveR_u() {
-    setContentOpacity(downChild, "0");
+    setContentOpacity(downChild, "", "");
     const currentContent = content.children[checkDown()];
     if (currentContent) {
         const childrenArray = getChildrenArray(currentContent);
@@ -126,20 +135,20 @@ function moveR_u() {
         } else {
             downChild = 0;
         }
-        setContentOpacity(downChild, "1");
+        setContentOpacity(downChild, "flex", "1");
     }
 }
 
 function moveL_u() {
     const currentContent = content.children[checkDown()];
     const childrenArray = getChildrenArray(currentContent);
-    setContentOpacity(downChild, "0");
+    setContentOpacity(downChild, "", "");
     if (downChild - 1 >= 0) {
         downChild--;
     } else {
         downChild = childrenArray.length - 1;
     }
-    setContentOpacity(downChild, "1");
+    setContentOpacity(downChild, "flex", "1");
 }
 
 function reset() {
@@ -154,10 +163,6 @@ function updateTitleText() {
     titleText.textContent = checkSelect(pos + Math.floor(foundCassettes.length / 2));
 }
 
-function sendMessageToSpotifyIframe(iframe, message) {
-    iframe.contentWindow.postMessage(message, 'https://sdk.scdn.co');
-}
-
 let lastExecutionTime = 0;
 var throttleInterval = 300;
 
@@ -168,28 +173,40 @@ function handleKeyEvent(key) {
     if (currentTime - lastExecutionTime < throttleInterval) return;
     lastExecutionTime = currentTime;
 
-    if (key === 'ArrowLeft') {
+    if (key === 'ArrowLeft' && !document.getElementById('popup')) {
         if (canMove && pos > -Math.floor(foundCassettes.length / 2)) {
             moveR();
             updateTitleText();
         } else if (!canMove) {
             moveL_u();
         }
-    } else if (key === 'ArrowRight') {
+    } else if (key === 'ArrowRight' && !document.getElementById('popup')) {
         if (canMove && pos < Math.floor(foundCassettes.length / 2)) {
             moveL();
             updateTitleText();
         } else if (!canMove) {
             moveR_u();
         }
-    } else if (key === 'ArrowDown') {
+    } else if (key === 'ArrowDown' && !document.getElementById('popup')) {
+        foundCassettes.forEach(item => {
+            if (isAbove(item, walkman)){
+                let link = item.querySelector('a');
+                if (link) {
+                    window.location.href = link.href;
+                }
+                link = item.querySelector('iframe');
+                if (link) {
+                    window.location.href = link.src;
+                }
+            }
+        });
         if (canMove){
             moveD();
-            setContentOpacity(0, "1");
+            setContentOpacity(0, "flex", "1");
         }
     } else if (key === 'ArrowUp' && !canMove) {
         moveU();
-    } else if (key === 'c'){
+    } else if (key === 'c' && !document.getElementById('popup')){
         if (!canMove) {
             const currentContent = content.children[checkDown()].children[downChild];
             if (currentContent) {
@@ -203,6 +220,12 @@ function handleKeyEvent(key) {
                 }
             }
         }
+    } else if (key === 'x'){
+        if (document.getElementById('popup')){
+            document.getElementById('popup').remove();
+        }
+    } else if (key === 'z' && !document.getElementById('popup')){
+        popup();
     }
 }
 
@@ -210,6 +233,9 @@ document.getElementById('touch_left').addEventListener('click', () => handleKeyE
 document.getElementById('touch_right').addEventListener('click', () => handleKeyEvent('ArrowRight'));
 document.getElementById('touch_down').addEventListener('click', () => handleKeyEvent('ArrowDown'));
 document.getElementById('touch_up').addEventListener('click', () => handleKeyEvent('ArrowUp'));
+document.getElementById('touch_c').addEventListener('click', () => handleKeyEvent('c'));
+document.getElementById('touch_x').addEventListener('click', () => handleKeyEvent('x'));
+document.getElementById('touch_z').addEventListener('click', () => handleKeyEvent('z'));
 
 updateTitleText();
 getdata_current(document.getElementById("live-1"),document.getElementById("live-2"));

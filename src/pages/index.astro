@@ -1,18 +1,23 @@
 ---
 import Layout from '../layouts/full.astro';
 import Spotify from '../comp/spotify.astro';
+import Keys from '../comp/keys.astro';
+
 ---
 <Layout desc="hi" title='hi'>
+	<script src="../res/js/script" />
+	<script src="../res/js/fedi" />
+	<script src="../res/js/popup" />
 	<div id="box">
 		<h1 id="title-text" style="width:100%;text-align: center;">
 			hi
 		</h1>
 		<div id="player">
-			<div class="box-cas" id="casette_1"><p>funnnn</p></div>
+			<div class="box-cas" id="casette_1"><p>music</p></div>
 			<div class="box-cas" id="casette_2"><p>about me</p></div>
 			<div class="box-cas" id="casette_3"><p>home</p></div>	
 			<div class="box-cas" id="casette_4"><p>fedi</p></div>
-			<div class="box-cas" id="casette_5"><p>blog</p></div>
+			<div class="box-cas" id="casette_5"><p>blog</p><a href="https://blog.roxcelic.love">follow me (:</a></div>
 		</div>
 		<div id="walkman" />
 		<div id="content">
@@ -22,6 +27,7 @@ import Spotify from '../comp/spotify.astro';
 			</div>
 
 			<div id="content_2">
+				
 				<div class="red"/>
 				<div class="red"/>				
 			</div>
@@ -30,26 +36,15 @@ import Spotify from '../comp/spotify.astro';
 				<div class="red"/>				
 			</div>
 			<div id="content_4">
-				<div class="red"/>
-				<div class="red"/>				
-			</div>
-			<div id="content_5">
 				<div class="red">
 					<p>
-						blog
+						<a href="https://fedi.roxcelic.love">My posts can also be seen on my fedi!</a>
 					</p>
 				</div>
 			</div>
+			<div id="content_5">
+			</div>
 		</div>
 	</div>
-	<div class="thelitch">
-		<div id="parent">
-			<div class="child" id="touch_up" style="background-image: url('../../Up.png');"/>
-			<div class="child" id="touch_left" style="background-image: url('../../Left.png');"/>
-			<div style="width: 75px;height:75px"/>
-			<div class="child" id="touch_right" style="background-image: url('../../Right.png');"/>
-			<div class="child" id="touch_down" style="background-image: url('../../Down.png');"/>
-			</div>
-		  </div>
-	</div>
+	<Keys />
 </Layout>

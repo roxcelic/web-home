@@ -87,7 +87,7 @@ p {
     text-align: center;
     position: fixed;
     bottom: 100px;
-    left: 25px;
+    right: 25px;
     height: 100px;
     width: 200px;
     max-width: 250px;
@@ -110,7 +110,7 @@ p {
     text-align: center;
     position: fixed;
     bottom: 100px;
-    right: 100px;
+    left: 25px;
 }
 
 #parent {
@@ -212,4 +212,9 @@ p {
     height: auto;
     margin: auto;
     border-radius: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    width: 100%;
 }

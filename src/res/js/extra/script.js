@@ -134,7 +134,7 @@ export async function fetchAndDisplayPosts() {
               }
             }
             else{
-                a.href="https://thispersonisnotreal.com";
+                a.href=post.url;
                 postElement.appendChild(a);
             }
           contentElement.appendChild(postElement);

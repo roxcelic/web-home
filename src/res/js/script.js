@@ -11,7 +11,7 @@ import {
 } from "./extra/lib";
 
 let lastExecutionTime = 0;
-const throttleInterval = 300;
+const throttleInterval = 400;
 
 document.addEventListener('keydown', event => lastExecutionTime = handleKeyEvent(event.key, lastExecutionTime, throttleInterval));
 

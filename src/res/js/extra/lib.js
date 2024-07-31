@@ -1,4 +1,5 @@
-export { getDataSpotify, getDataCurrent, fetchAndDisplayPosts, popup } from "./script";
+export { getDataSpotify, getDataCurrent, fetchAndDisplayPosts, popup, getstatus, fetchDataFromWorker } from "./script";
+import { popup } from "./script";
 
 const cassettes = ["casette_1", "casette_2", "casette_3", "casette_4", "casette_5"];
 const foundCassettes = cassettes.map(id => document.getElementById(id));
@@ -172,24 +173,24 @@ export function updateTitleText(pos) {
 
 export function handleKeyEvent(key, lastExecutionTime, throttleInterval) {
     const currentTime = Date.now();
-    if (currentTime - lastExecutionTime < throttleInterval) return;
+    if (currentTime - lastExecutionTime < throttleInterval) return lastExecutionTime;
     lastExecutionTime = currentTime;
 
-    if (key === 'ArrowLeft' && !document.getElementById('popup')) {
+    if (key === 'ArrowLeft' || key === "a" && !document.getElementById('popup')) {
         if (canMove && pos > -Math.floor(foundCassettes.length / 2)) {
             moveR();
             updateTitleText(pos);
         } else if (!canMove) {
             moveL_u();
         }
-    } else if (key === 'ArrowRight' && !document.getElementById('popup')) {
+    } else if (key === 'ArrowRight' || key === "d" && !document.getElementById('popup')) {
         if (canMove && pos < Math.floor(foundCassettes.length / 2)) {
             moveL();
             updateTitleText(pos);
         } else if (!canMove) {
             moveR_u();
         }
-    } else if (key === 'ArrowDown' && !document.getElementById('popup')) {
+    } else if (key === 'ArrowDown' || key === "s" && !document.getElementById('popup')) {
         foundCassettes.forEach(item => {
             if (isAbove(item, walkman)) {
                 let link = item.querySelector('a');
@@ -206,7 +207,7 @@ export function handleKeyEvent(key, lastExecutionTime, throttleInterval) {
             moveD();
             setContentOpacity(0, "flex", "1");
         }
-    } else if (key === 'ArrowUp' && !canMove) {
+    } else if (key === 'ArrowUp' || key === "w" && !canMove) {
         moveU();
     } else if (key === 'c' && !document.getElementById('popup')) {
         if (!canMove) {
@@ -229,6 +230,7 @@ export function handleKeyEvent(key, lastExecutionTime, throttleInterval) {
     } else if (key === 'z' && !document.getElementById('popup')) {
         popup();
     }
+    return lastExecutionTime
 }
 
 export function handleGamepadEvent(lastExecutionTime, throttleInterval) {

@@ -2,34 +2,34 @@
 import Layout from '../layouts/full.astro';
 import Spotify from '../comp/spotify.astro';
 import Keys from '../comp/keys.astro';
+import Aboutme from '../comp/aboutme.astro';
 
 ---
 <Layout desc="hi" title='hi'>
 	<script src="../res/js/script" />
-	<script src="../res/js/fedi" />
-	<script src="../res/js/popup" />
 	<div id="box">
 		<h1 id="title-text" style="width:100%;text-align: center;">
-			hi
+			loading..
 		</h1>
+		<h4 id="status" style="">
+			loading..
+		</h4>
 		<div id="player">
 			<div class="box-cas" id="casette_1"><p>music</p></div>
-			<div class="box-cas" id="casette_2"><p>about me</p></div>
+			<div class="box-cas" id="casette_2"><p>socials</p></div>
 			<div class="box-cas" id="casette_3"><p>home</p></div>	
 			<div class="box-cas" id="casette_4"><p>fedi</p></div>
 			<div class="box-cas" id="casette_5"><p>blog</p><a href="https://blog.roxcelic.love/blog"/></div>
 		</div>
 		<div id="walkman" />
-		<div id="content">
+		<div id="content" class="size">
 			<p id="content-view" style="opacity: 0;">ji</p>
 			<div id="content_1">
 				<Spotify />
 			</div>
 
 			<div id="content_2">
-				
-				<div class="red"/>
-				<div class="red"/>				
+				<Aboutme/>
 			</div>
 			<div id="content_3">
 				<div class="red">
@@ -46,10 +46,32 @@ import Keys from '../comp/keys.astro';
 					<h2>
 						ENJOY	
 					</h2>	
-				</div>			
+				</div>		
+				<div class="red">
+					<p>If you have any issues, please report them here or dm me</p>
+					<script src="https://giscus.app/client.js"
+        				data-repo="roxcelic/web-home"
+        				data-repo-id="R_kgDOL6k6bA"
+        				data-category="General"
+        				data-category-id="DIC_kwDOL6k6bM4Cfc-n"
+        				data-mapping="url"
+        				data-strict="0"
+        				data-reactions-enabled="1"
+        				data-emit-metadata="0"
+        				data-input-position="top"
+        				data-theme="noborder_gray"
+        				data-lang="en"
+        				crossorigin="anonymous"
+        				async />	
+				</div>	
 			</div>
 			<div id="content_4">
 				<div class="red">
+					<div class="pfp_block">
+						<span class="material-symbols-outlined">
+							link
+						</span>
+					</div>
 					<p>
 						<a href="https://fedi.roxcelic.love">My posts can also be seen on my fedi!</a>
 					</p>

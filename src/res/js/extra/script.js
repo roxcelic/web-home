@@ -12,7 +12,7 @@ async function fetchData(url, params = {}) {
   return null;
 }
 
-async function fetchDataFromWorker() {
+export async function fetchDataFromWorker() {
   return await fetchData("https://api.roxcelic.love/");
 }
 
@@ -32,8 +32,7 @@ function createElement(tag, attributes = {}, textContent = "") {
   return element;
 }
 
-export async function getDataSpotify() { 
-  const data = await fetchDataFromWorker();
+export async function getDataSpotify(data) { 
   if (!data) return;
 
   const spotifyItem1 = document.getElementById("spotifyicon");
@@ -48,8 +47,20 @@ export async function getDataSpotify() {
   spotifyItem3.src = `https://open.spotify.com/embed/playlist/${data.spotifyplaylist}?utm_source=generator&theme=1`;
 }
 
-export async function getDataCurrent(host, host1) { 
-  const data = await fetchDataFromWorker();
+export async function getstatus(id, data){
+    const status = document.getElementById(id);
+    let checkdate = Math.abs(new Date() - new Date(data.status.date)) <= (parseInt(data.status.last) * 60 * 60 * 1000);
+    if (data.status.type == "string" && checkdate){
+        status.textContent = data.status.message;
+    }else if (data.status.type == "html" && checkdate){
+        status.innerHTML = data.status.message;
+    }
+    else {
+        status.textContent = "sorry im a bit lazy";
+    }
+}
+
+export async function getDataCurrent(host, host1, data) { 
   if (!data) return;
 
   if (data.lastfm['@attr']) {
@@ -92,6 +103,7 @@ export async function fetchAndDisplayPosts() {
       const nonReplies = posts.filter(post => !post.in_reply_to_id).slice(0,8);
       const contentElement = document.getElementById('content_4');
       nonReplies.forEach(post => {
+          const a = document.createElement('a');
           const postElement = document.createElement('div');
           postElement.className = 'red';
           const pfpElement = document.createElement('img');
@@ -120,7 +132,11 @@ export async function fetchAndDisplayPosts() {
                   imageLink.appendChild(imageElement);
                   postElement.appendChild(imageLink);
               }
-          }
+            }
+            else{
+                a.href="https://thispersonisnotreal.com";
+                postElement.appendChild(a);
+            }
           contentElement.appendChild(postElement);
       });
   } catch (error) {

@@ -1,47 +1,38 @@
-# Astro Starter Kit: Minimal
+## Hey!
 
-```sh
-npm create astro@latest -- --template minimal
-```
+This is the GitHub repo for my [website](https://roxcelic.love). I've based this website on music, very highly. With my other website designs, I felt I had little control over them when they were deployed, which really was not what I wanted. I wanted this website to be a way I could express myself at any time, anywhere, so...
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+This website utilizes the following resources to allow me to do this:
+> https://api.roxcelic.love
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> https://files.roxcelic.love/status/status.json
 
-## 🚀 Project Structure
+> the Last.fm API
 
-Inside of your Astro project, you'll see the following folders and files:
+> my personal [Fedi](https://fedi.roxcelic.love)'s API
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+> the Spotify API
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+This allows me to have the website constantly updating with content at any time of the day, most of it automatic. The only part which requires any effort from me is the status feature, which you will notice as the page's subheading. This can take the form of a [string, image, HTML], giving me a lot more control. With this all being open source, it is impossible for me to do anything sketchy that any other website would not be able to do.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+`Exceptions to the api.roxcelic.love that is private due to it containing API secrets`
 
-Any static assets, like images, can be placed in the `public/` directory.
+* Some credits go to:
+    - me
+    - the Celeste developer team for some assets used
 
-## 🧞 Commands
+* Some acknowledgements go to:
+    - the Astro development team
 
-All commands are run from the root of the project, from a terminal:
+# Changelog
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+> Changes from previous iterations are excluded
 
-## 👀 Want to learn more?
+* Version
+  - `[1.06]`
+  - README updated, credits added
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Log
+
+* The changes for version 1.06 are:
+    - README updated, credits added

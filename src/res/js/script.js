@@ -10,8 +10,10 @@ import {
     fetchDataFromWorker
 } from "./extra/lib";
 
+let canMove = document.getElementById("canMove");
+
 let lastExecutionTime = 0;
-const throttleInterval = 400;
+const throttleInterval = 300;
 
 document.addEventListener('keydown', event => lastExecutionTime = handleKeyEvent(event.key, lastExecutionTime, throttleInterval));
 

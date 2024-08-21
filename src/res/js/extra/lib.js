@@ -8,12 +8,12 @@ const walkman = document.getElementById("walkman");
 const content = document.getElementById("content");
 const titleText = document.getElementById("title-text");
 const content_num = document.getElementById("content-view");
-let canMove = true;
+let canMove = document.getElementById("canMove");
 let pos = 0;
 const extraTop = 13;
 let downChild = 0;
 
-export function getChildrenArray(element) {
+function getChildrenArray(element) {
     return element ? Array.from(element.children) : [];
 }
 
@@ -76,7 +76,7 @@ function moveR() {
 function moveD() {
     foundCassettes.some(item => {
         if (isAbove(item, walkman)) {
-            canMove = false;
+            canMove.textContent="False";
             const walkmanRect = walkman.getBoundingClientRect();
             const itemRect = item.getBoundingClientRect();
             const currentTop = parseInt(window.getComputedStyle(item).top, 10) || 0;
@@ -102,8 +102,7 @@ function moveU() {
     reset();
     downChild = 0;
     let item = foundCassettes[checkDown()-1];
-
-    canMove = true;
+    canMove.textContent = "True";
         item.style.transition = 'top 0.3s';
         item.style.top = `${-20}px`;
         setTimeout(() => {
@@ -177,17 +176,17 @@ export function handleKeyEvent(key, lastExecutionTime, throttleInterval) {
     lastExecutionTime = currentTime;
 
     if (key === 'ArrowLeft' || key === "a" && !document.getElementById('popup')) {
-        if (canMove && pos > -Math.floor(foundCassettes.length / 2)) {
+        if (canMove.textContent=="True" && pos > -Math.floor(foundCassettes.length / 2)) {
             moveR();
             updateTitleText(pos);
-        } else if (!canMove) {
+        } else if (canMove.textContent=="False") {
             moveL_u();
         }
     } else if (key === 'ArrowRight' || key === "d" && !document.getElementById('popup')) {
-        if (canMove && pos < Math.floor(foundCassettes.length / 2)) {
+        if (canMove.textContent=="True" && pos < Math.floor(foundCassettes.length / 2)) {
             moveL();
             updateTitleText(pos);
-        } else if (!canMove) {
+        } else if (canMove.textContent=="False") {
             moveR_u();
         }
     } else if (key === 'ArrowDown' || key === "s" && !document.getElementById('popup')) {
@@ -203,14 +202,14 @@ export function handleKeyEvent(key, lastExecutionTime, throttleInterval) {
                 }
             }
         });
-        if (canMove) {
+        if (canMove.textContent=="True") {
             moveD();
             setContentOpacity(0, "flex", "1");
         }
-    } else if (key === 'ArrowUp' || key === "w" && !canMove) {
+    } else if (key === 'ArrowUp' || key === "w" && !canMove.textContent=="True") {
         moveU();
     } else if (key === 'c' && !document.getElementById('popup')) {
-        if (!canMove) {
+        if (!canMove.textContent=="True") {
             const currentContent = content.children[checkDown()].children[downChild];
             if (currentContent) {
                 let link = currentContent.querySelector('a');
@@ -232,7 +231,6 @@ export function handleKeyEvent(key, lastExecutionTime, throttleInterval) {
     }
     return lastExecutionTime
 }
-
 export function handleGamepadEvent(lastExecutionTime, throttleInterval) {
     const gamepads = navigator.getGamepads();
     if (!gamepads) return;

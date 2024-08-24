@@ -1,0 +1,33 @@
+@import url("https://roxcelic.github.io/crimtane/styles.css");
+/**id elements*/
+#holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#info {
+    display: none;
+}
+#player {
+    margin: auto;
+    position: relative;
+    margin-top: 50px;
+    border: none;
+    border: 3px red solid;
+}
+
+/**class elements*/
+.box {
+    position: relative;
+    width: 20px;
+    height: 10px;
+    border: 3px red solid;
+    margin: 3px;
+    left: 0px;
+    transition: all ease-in-out 0.3s;
+}
+.content {
+    display: none;
+    position: absolute;
+    top: 20px;
+}

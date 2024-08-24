@@ -1,4 +1,4 @@
-import { parseInfoData, positionChildAbovePlayer, syncContentPositions, handleKeyEvent } from "./extra/lib";
+import { parseInfoData, positionChildAbovePlayer, handleKeyEvent, moveDown, TextUpdate } from "./extra/lib";
 
 // Fetch the main elements which contain the content
 const holder = document.getElementById("holder");
@@ -6,10 +6,11 @@ const player = document.getElementById('player');
 
 // Defining variables which may be used later on
 let children = Array.from(holder.children);
+let children2 = Array.from(player.children);
 let main = {};
 
 // Loop through children of 'holder' and populate 'main' object
-children.forEach((element, index) => {
+children2.forEach((element, index) => {
     main[`child${index}`] = Array.from(element.children);
 });
 
@@ -18,8 +19,9 @@ children.forEach((element, index) => {
 //set param values if unset
 const defaultValues = {
     canmove: 'true',
-    activecas: '0',
-    activecontent: '0'
+    activecas: Math.floor(children.length / 2),
+    activecontent: '0',
+    lastactive: '[0,0]'
 };
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
@@ -33,11 +35,12 @@ for (const [key, defaultValue] of Object.entries(defaultValues)) {
 url.search = params.toString();
 window.history.replaceState({}, '', url.toString());
 
-window.addEventListener('resize', () => syncContentPositions(player));
-window.addEventListener('scroll', () => syncContentPositions(player));
-
 positionChildAbovePlayer(children, parseInfoData("w_activeCas",parseInfoData("r")[1])[1]);
+if (parseInfoData("r")[0] == false){
+    moveDown(children, main);
+}
+TextUpdate(main,children);
 
 document.addEventListener('keydown', event =>  {
-    handleKeyEvent( children,event.key);
+    handleKeyEvent( children,event.key,main);
 });

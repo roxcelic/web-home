@@ -1,4 +1,4 @@
-import { parseInfoData, positionChildAbovePlayer, handleKeyEvent, moveDown, TextUpdate } from "./extra/lib";
+import { parseInfoData, positionChildAbovePlayer, handleKeyEvent, moveDown, TextUpdate, moveUp, unactive   } from "./extra/lib";
 
 // Fetch the main elements which contain the content
 const holder = document.getElementById("holder");
@@ -14,7 +14,20 @@ children2.forEach((element, index) => {
     main[`child${index}`] = Array.from(element.children);
 });
 
+/**a function to make it so you can click on a cassette to make it active */
+async function Update(index){
+    if (parseInfoData("r")[0]==true){
+        parseInfoData("w_activeCas",index);
+        positionChildAbovePlayer(children, parseInfoData("r")[1])[1];
+    }
+}
+
 //init
+
+/**the continuation of the above function */
+children.forEach((item, index) => {
+    item.addEventListener('click', () => Update(index));
+});
 
 //set param values if unset
 const defaultValues = {
@@ -43,4 +56,33 @@ TextUpdate(main,children);
 
 document.addEventListener('keydown', event =>  {
     handleKeyEvent( children,event.key,main);
+});
+
+/**swipe controlls */
+let startX = null;
+let startY = null;
+document.addEventListener('touchstart', (event) => {
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+});
+document.addEventListener('touchend', (event) => {
+    const endX = event.changedTouches[0].clientX;
+    const endY = event.changedTouches[0].clientY;
+    const distanceX = endX - startX;
+    const distanceY = endY - startY;
+    if (Math.abs(distanceX) > Math.abs(distanceY)) {
+        if (distanceX > 50) {
+            handleKeyEvent(children,"d",main);
+        } else if (distanceX < -50) {
+            handleKeyEvent(children,"a",main);
+        }
+    } else {
+        if (distanceY > 50) {
+            handleKeyEvent(children,"s",main);
+        } else if (distanceY < -50) {
+            handleKeyEvent(children,"w",main);
+        }
+    }
+    startX = null;
+    startY = null;
 });

@@ -31,6 +31,66 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     width: 100%;
 }
+#touch {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    width: 30vw;
+    min-width: 35vh;
+    min-height: 22vh;
+    max-height: 40vh;
+
+    top: 30vh;
+
+    background-color: transparent;
+    padding: 1.5vh;
+    text-align: center;
+
+    transition: all ease-in-out 0.15s;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    animation: fadeOut 10s forwards;
+}
+#config{
+    background-color: #333030;
+
+    width: 30vw;
+    min-width: 35vh;
+    min-height: 22vh;
+    max-height: 40vh;
+
+    top: 30vh;
+
+    padding: 1.5vh;
+    text-align: center;
+    display: none;
+
+    transition: all ease-in-out 0.15s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border: solid white 2px;
+}
+#close-btn {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333030;
+    color: #fff;
+    border: solid white 2px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1;
+}
 /**class elements*/
 .cas {
     position: relative;
@@ -50,7 +110,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 20px;
     height: 10px;
-    border: 3px red solid;
+    border: solid rgb(201, 10, 74) 2px;
     margin: 3px;
     left: 0px;
     top: 0px;
@@ -58,10 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .content {
     width: 30vw;
-    min-width: 40vh;
-    //max-width: ;
-
-    //height: ;
+    min-width: 35vh;
     min-height: 22vh;
     max-height: 40vh;
 
@@ -71,16 +128,46 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
 
     transition: all ease-in-out 0.15s;
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
     display: none;
     flex-wrap: wrap;
-    opacity: 0;
 
     overflow-y: scroll;
     border: solid rgb(201, 10, 74) 2px;
 }
+
 .display {
     display: flex;
     justify-content: center; 
     align-items: center; 
 }
+
+/**animations */
+@keyframes fadeOut {
+    0% {background-image: url(../../../wasd.png);}
+    90% {opacity: 1;}
+    100% {
+        opacity: 0;
+        display: none;
+        background-image: url(../../../wasd.png);
+    }
+}
+
+/**media tags */
+@media (pointer: coarse) {
+    @keyframes fadeOut {
+        0% {background-image: url(../../../swipe.png);}
+        40% {background-image: url(../../../swipe.png);}
+        50% {background-image: url(../../../tap.png);}
+        90% {opacity: 1;}
+        100% {
+            opacity: 0;
+            display: none;
+            background-image: url(../../../tap.png);
+        }
+    }
+}
+

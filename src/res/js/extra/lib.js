@@ -128,13 +128,15 @@ export async function unactive(main) {
 
 export async function setactive(main) {
     await unactive(main);
-    const element = main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]];
-    element.style.display = "block";
-    element.style.opacity = 0;
-    setTimeout(() => {
-        element.style.opacity = 1;
-    }, 100);
-    parseInfoData("w_lastactive", [parseInfoData("r")[1], parseInfoData("r")[2]]);
+    if (!parseInfoData("r")[0]){
+        const element = main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]];
+        element.style.display = "block";
+        element.style.opacity = 0;
+        setTimeout(() => {
+            element.style.opacity = 1;
+        }, 100);
+        parseInfoData("w_lastactive", [parseInfoData("r")[1], parseInfoData("r")[2]]);
+    }
 }
 
 
@@ -153,44 +155,55 @@ export function TextUpdate(main,children){
     }
 }
 
+/**this is basically the input manager
+ * it will check for an input, and if it matches one it recognises it will preform the action
+ * you can also call this input manager as a function, which is what i do to add touch controlls
+ */
 export function handleKeyEvent(children, key, main){
+    let parsedData = parseInfoData("r");
     if (key=="ArrowLeft"||key=="a"){
-        if (parseInfoData("r")[0]==true){
-            if(parseInfoData("r")[1]>0){
-                parseInfoData("w_activecas",parseInfoData("r")[1]-1)
+        if (parsedData[0]==true){
+            if(parsedData[1]>0){
+                parseInfoData("w_activecas",parsedData[1]-1)
+            } else {
+                return;
             }
-        } else if (parseInfoData("r")[2] > 0){
-            parseInfoData("w_activecontent",parseInfoData("r")[2]-1);
+        } else if (parsedData[2] > 0){
+            parseInfoData("w_activecontent",parsedData[2]-1);
             setactive(main);
         } else {
-            parseInfoData("w_activecontent",main[`child${parseInfoData("r")[1]}`].length-1);
+            parseInfoData("w_activecontent",main[`child${parsedData[1]}`].length-1);
             setactive(main);
         }
     }
     else if (key=="ArrowRight"||key=="d"){
-        if (parseInfoData("r")[0]==true){
-            if(parseInfoData("r")[1]<children.length-1){
-                parseInfoData("w_activecas",parseInfoData("r")[1]+1)
+        if (parsedData[0]==true){
+            if(parsedData[1]<children.length-1){
+                parseInfoData("w_activecas",parsedData[1]+1)
+            } else {
+                return;
             }
-        } else if (parseInfoData("r")[2] < main[`child${parseInfoData("r")[1]}`].length-1){
-            parseInfoData("w_activecontent",parseInfoData("r")[2]+1);
+        } else if (parsedData[2] < main[`child${parsedData[1]}`].length-1){
+            parseInfoData("w_activecontent",parsedData[2]+1);
             setactive(main);
         } else {
             parseInfoData("w_activecontent",0);
             setactive(main);
         }
     }
-    else if (key=="ArrowDown"&&parseInfoData("r")[0]==true||key=="s"&&parseInfoData("r")[0]==true){
-        if(children[parseInfoData("r")[1]].children[1]){window.location.href=children[parseInfoData("r")[1]].children[1].href}
+    else if (key=="ArrowDown"&&parsedData[0]==true||key=="s"&&parsedData[0]==true){
+        if(children[parsedData[1]].children[1]){window.location.href=children[parsedData[1]].children[1].href}
         else{moveDown(children, main)}
     }
-    else if (key=="ArrowUp"&&parseInfoData("r")[0]==false||key=="w"&&parseInfoData("r")[0]==false){
+    else if (key=="ArrowUp"&&parsedData[0]==false||key=="w"&&parsedData[0]==false){
         moveUp(children)
         unactive(main);
+    } else if (key=="c"&&parsedData[0]==false){
+        if (main[`child${parsedData[1]}`][parsedData[2]].querySelector("a")) window.location.href = main[`child${parsedData[1]}`][parsedData[2]].querySelector("a").href;
     }
-    else if (parseFloat(key)>=1&&parseFloat(key)<=children.length&&parseInfoData("r")[0]==true){
+    else if (parseFloat(key)>=1&&parseFloat(key)<=children.length&&parsedData[0]==true){
         parseInfoData("w_activecas",key-1);
-    } else if (parseFloat(key)>=1&&key<=main[`child${parseInfoData("r")[1]}`].length) {
+    } else if (parseFloat(key)>=1&&key<=main[`child${parsedData[1]}`].length) {
             parseInfoData("w_activecontent",key-1);
             setactive(main);
     }

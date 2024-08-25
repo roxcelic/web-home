@@ -72,9 +72,9 @@ document.addEventListener('touchend', (event) => {
     const distanceY = endY - startY;
     if (Math.abs(distanceX) > Math.abs(distanceY)) {
         if (distanceX > 50) {
-            handleKeyEvent(children,"d",main);
-        } else if (distanceX < -50) {
             handleKeyEvent(children,"a",main);
+        } else if (distanceX < -50) {
+            handleKeyEvent(children,"d",main);
         }
     } else {
         if (distanceY > 50) {

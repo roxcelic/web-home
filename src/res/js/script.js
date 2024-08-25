@@ -2,7 +2,7 @@ import { parseInfoData, positionChildAbovePlayer, handleKeyEvent, moveDown, Text
 
 // Fetch the main elements which contain the content
 const holder = document.getElementById("holder");
-const player = document.getElementById('player');
+const player = document.getElementById('player2');
 
 // Defining variables which may be used later on
 let children = Array.from(holder.children);

@@ -43,51 +43,114 @@ export function parseInfoData(action, data) {
     return parsed;
 }
 
+const childTimeouts = new Map();
 export function positionChildAbovePlayer(children, index) {
     if (index < 0 || index >= children.length) {
         console.error('Index out of bounds');
         return;
     }
+
     const targetElement = children[index];
     const targetRect = targetElement.getBoundingClientRect();
     const playerRect = document.getElementById('player').getBoundingClientRect();
-    const movement = playerRect.left - targetRect.left;
+    const targetCenterX = targetRect.left + targetRect.width / 2;
+    const playerCenterX = playerRect.left + playerRect.width / 2;
+    const movement = playerCenterX - targetCenterX;
+    const overshootFactor = 1.1;
+
     children.forEach(element => {
         const currentLeft = parseFloat(window.getComputedStyle(element).left) || 0;
-        element.style.left = `${currentLeft + movement }px`;
+        const newLeft = `${currentLeft + movement * overshootFactor}px`;
+        if (childTimeouts.has(element)) {
+            clearTimeout(childTimeouts.get(element));
+        }
+        element.style.left = newLeft;
+        const timeoutId = setTimeout(() => {
+            element.style.left = `${currentLeft + movement}px`;
+            childTimeouts.delete(element); 
+        }, 300); 
+        childTimeouts.set(element, timeoutId);
     });
     return movement;
 }
 
-export function moveDown(children, main){
-    children[parseInfoData("r")[1]].style.top = "20px";
-    parseInfoData("w_canmove",false);
+const moveDownTimeouts = new Map();
+const moveUpTimeouts = new Map();
+
+export function moveDown(children, main) {
+    const targetIndex = parseInfoData("r")[1];
+    const targetElement = children[targetIndex];
+    if (moveDownTimeouts.has(targetElement)) {
+        clearTimeout(moveDownTimeouts.get(targetElement));
+    }
+    if (moveUpTimeouts.has(targetElement)) {
+        clearTimeout(moveUpTimeouts.get(targetElement));
+    }
+    targetElement.style.top = '6vh';
+    const timeoutId = setTimeout(() => {
+        targetElement.style.top = '5vh';
+        moveDownTimeouts.delete(targetElement);
+    }, 300);
+    moveDownTimeouts.set(targetElement, timeoutId);
+    parseInfoData("w_canmove", false);
     setactive(main);
 }
-export function moveUp(children){
-    children[parseInfoData("r")[1]].style.top = "0px";
-    parseInfoData("w_canmove",true);
-    parseInfoData("w_activecontent",0);
+
+export function moveUp(children) {
+    const targetIndex = parseInfoData("r")[1];
+    const targetElement = children[targetIndex];
+    if (moveUpTimeouts.has(targetElement)) {
+        clearTimeout(moveUpTimeouts.get(targetElement));
+    }
+    if (moveDownTimeouts.has(targetElement)) {
+        clearTimeout(moveDownTimeouts.get(targetElement));
+    }
+    targetElement.style.top = '-2vh';
+    const timeoutId = setTimeout(() => {
+        targetElement.style.top = '0px';
+        moveUpTimeouts.delete(targetElement);
+    }, 300);
+    moveUpTimeouts.set(targetElement, timeoutId);
+    parseInfoData("w_canmove", true);
+    parseInfoData("w_activecontent", 0);
 }
-export function unactive(main){
-    main[`child${parseInfoData("r")[3][0]}`][parseInfoData("r")[3][1]].style.display = "none";
+
+export async function unactive(main) {
+    const element = main[`child${parseInfoData("r")[3][0]}`][parseInfoData("r")[3][1]];
+    element.style.opacity = 0;
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            element.style.display = "none";
+            resolve();
+        }, 100);
+    });
 }
-export function setactive(main){
-    unactive(main);
-    main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]].style.display = "block";
-    parseInfoData("w_lastactive",[parseInfoData("r")[1],parseInfoData("r")[2]]);}
+
+export async function setactive(main) {
+    await unactive(main);
+    const element = main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]];
+    element.style.display = "block";
+    element.style.opacity = 0;
+    setTimeout(() => {
+        element.style.opacity = 1;
+    }, 100);
+    parseInfoData("w_lastactive", [parseInfoData("r")[1], parseInfoData("r")[2]]);
+}
+
 
 export function TextUpdate(main,children){
     let parsedText = parseInfoData("r");
 
     //title
-    console.log(children[`${parsedText[1]}`].children[0].textContent);
     title.textContent = children[`${parsedText[1]}`].children[0].textContent;
 
     //counter
     let max = main[`child${parsedText[1]}`].length;
-    if (parsedText[0]==true){counter.textContent=""}
-    else {counter.textContent=`${parsedText[2]+1}/${max}`}
+    if (parsedText[0]==true){counter.style.opacity="0"}
+    else {
+        counter.style.opacity="1";
+        counter.textContent=`${parsedText[2]+1}/${max}`
+    }
 }
 
 export function handleKeyEvent(children, key, main){
@@ -118,13 +181,19 @@ export function handleKeyEvent(children, key, main){
         }
     }
     else if (key=="ArrowDown"&&parseInfoData("r")[0]==true||key=="s"&&parseInfoData("r")[0]==true){
-        moveDown(children, main)
+        if(children[parseInfoData("r")[1]].children[1]){window.location.href=children[parseInfoData("r")[1]].children[1].href}
+        else{moveDown(children, main)}
     }
     else if (key=="ArrowUp"&&parseInfoData("r")[0]==false||key=="w"&&parseInfoData("r")[0]==false){
         moveUp(children)
         unactive(main);
     }
-    else if (parseFloat(key)>=1&&parseFloat(key)<=children.length){parseInfoData("w_activecas",key-1)}
+    else if (parseFloat(key)>=1&&parseFloat(key)<=children.length&&parseInfoData("r")[0]==true){
+        parseInfoData("w_activecas",key-1);
+    } else if (parseFloat(key)>=1&&key<=main[`child${parseInfoData("r")[1]}`].length) {
+            parseInfoData("w_activecontent",key-1);
+            setactive(main);
+    }
     positionChildAbovePlayer(children,parseInfoData("r")[1]);
     TextUpdate(main,children);
 }

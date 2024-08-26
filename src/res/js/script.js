@@ -6,6 +6,7 @@ const holder = document.getElementById("holder");
 const player = document.getElementById('player2');
 const config = document.getElementById('config');
 const close = document.getElementById('close-btn');
+const egg = document.getElementById('egg');
 
 // Defining variables which may be used later on
 let children = Array.from(holder.children);
@@ -22,6 +23,7 @@ async function Update(index){
     if (parseInfoData("r")[0]==true){
         parseInfoData("w_activeCas",index);
         positionChildAbovePlayer(children, parseInfoData("r")[1])[1];
+        TextUpdate(main,children);
     }
 }
 
@@ -51,6 +53,20 @@ for (const [key, defaultValue] of Object.entries(defaultValues)) {
 url.search = params.toString();
 window.history.replaceState({}, '', url.toString());
 
+
+
+/**value conditions, so easter eggs*/
+if (JSON.stringify(parseInfoData("r")) === JSON.stringify([false, 16, 12, [2007]])) {
+    egg.textContent = "wow you knew my birthday";
+} /**https://roxcelic.love/?canmove=false&activecas=16&activecontent=12&lastactive=%5B2007%5D*/
+if (JSON.stringify(parseInfoData("r")) === JSON.stringify([false, 112232, 11231233, [22120312323]])) {
+    egg.textContent = "this is completly random, you cheated and now i hate you (/j). i included the urls in the js for people like you";
+} /**https://roxcelic.love/?canmove=false&activecas=112232&activecontent=11231233&lastactive=%5B22120312323%5D*/
+if (JSON.stringify(parseInfoData("r")) === JSON.stringify([true, -12, -12, [80085]])) {
+    egg.textContent = "hehe boobs";
+} /**https://roxcelic.love/?canmove=true&activecas=-12&activecontent=-12&lastactive=%5B80085%5D*/
+
+/**check default values */
 if (parseInfoData("r")[1]>=0&&parseInfoData("r")[1]<=children.length-1){
     positionChildAbovePlayer(children, parseInfoData("w_activeCas",parseInfoData("r")[1])[1]);
 } else {

@@ -193,5 +193,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 @keyframes fadeInIframe {
     0% {opacity: 0;}
-    100% {opacity: 1;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }

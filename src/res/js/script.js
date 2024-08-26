@@ -51,9 +51,11 @@ for (const [key, defaultValue] of Object.entries(defaultValues)) {
 url.search = params.toString();
 window.history.replaceState({}, '', url.toString());
 
-console.log(main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]]);
-
-positionChildAbovePlayer(children, parseInfoData("w_activeCas",parseInfoData("r")[1])[1]);
+if (parseInfoData("r")[1]>=0&&parseInfoData("r")[1]<=children.length-1){
+    positionChildAbovePlayer(children, parseInfoData("w_activeCas",parseInfoData("r")[1])[1]);
+} else {
+    parseInfoData("w_activeCas",Math.floor(children.length / 2));
+}
 if (parseInfoData("r")[0] == false&&main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]]!=undefined){
     moveDown(children, main);
 } else {

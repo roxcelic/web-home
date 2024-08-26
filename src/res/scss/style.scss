@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 50%;
     transform: translateX(-50%);
 
-    animation: fadeOut 10s forwards;
+    animation: fadeOut 5s forwards;
 }
 #config{
     background-color: #333030;
@@ -92,6 +92,15 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1;
 }
 /**class elements*/
+.pfp_block {
+    width: 50px;
+    height: 50px;
+    border-radius: $radius;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 2.5vh;
+}
 .cas {
     position: relative;
     min-width: $box-width;
@@ -106,6 +115,13 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: $radius;
 }
 .cas *{display: none;}
+.attached_image {
+    max-width: 100%;
+    max-height: 10vh;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+}
 .box {
     position: relative;
     width: 20px;
@@ -117,24 +133,24 @@ h1, h2, h3, h4, h5, h6 {
     transition: all ease-in-out 0.3s;
 }
 .content {
+    background-color: $box-color;
+    min-width: 40vh;
     width: 30vw;
-    min-width: 35vh;
     min-height: 22vh;
+    height: auto;
     max-height: 40vh;
 
-    background-color: #333030;
     padding: 1.5vh;
     text-align: center;
-    border-radius: 10px;
+    border-radius: $radius;
 
-    transition: all ease-in-out 0.15s;
+    opacity: 0;
+    transition: all ease-in-out 0.3s;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    
     display: none;
     flex-wrap: wrap;
-
+    left: 50%;
+    transform: translateX(-50%);
     overflow-y: scroll;
     border: solid rgb(201, 10, 74) 2px;
 }
@@ -148,8 +164,13 @@ h1, h2, h3, h4, h5, h6 {
 /**animations */
 @keyframes fadeOut {
     0% {background-image: url(../../../wasd.png);}
-    90% {opacity: 1;}
-    100% {
+    40% {opacity: 1;}
+    50% {
+        opacity: 0;
+        display: none;
+        background-image: url(../../../wasd.png);
+    }
+    100%{
         opacity: 0;
         display: none;
         background-image: url(../../../wasd.png);

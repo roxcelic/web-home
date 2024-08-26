@@ -1,14 +1,18 @@
 ---
 import Layout from '../layouts/astro/main.astro';
+import Home from '../comp/home.astro';
+import Socials from '../comp/socials.astro';
+import Music from '../comp/music.astro';
+import Fedi from '../comp/fedi.astro';
 ---
 <Layout desc='jo' title='oj'>
     <h2 style="width: 100%;text-align: center;" id="title"/>
     <h3 style="width: 100%;text-align: center;margin-bottom: 2.5vh;" id="status">loading..</h3>
     <div id="holder">
-        <div class="cas"><p>home1</p></div>
-        <div class="cas"><p>home2</p></div>
-        <div class="cas"><p>home3</p></div>
-        <div class="cas"><p>home5</p></div>
+        <div class="cas"><p>music</p></div>
+        <div class="cas"><p>socials</p></div>
+        <div class="cas"><p>home</p></div>
+        <div class="cas"><p>fedi</p></div>
         <div class="cas"><p>blog</p><a href="https://blog.roxcelic.love"></a></div>
     </div>
     <!--ready-->
@@ -19,21 +23,16 @@ import Layout from '../layouts/astro/main.astro';
     <div class="box" id="player2">
     <!--?-->
         <div class="display">
-            <div class="box content"/>
-            <div class="box content"/>
-            <div class="box content"/>
+            <Music />
         </div>
         <div class="display">
-            <div class="box content"/>
-            <div class="box content"/>
+            <Socials />
         </div>
         <div class="display">
-            <div class="box content"/>
-            <div class="box content"/>
+            <Home />
         </div>
-        <div class="display">
-            <div class="box content"/>
-            <div class="box content"/>
+        <div class="display" id="fedi">
+            <Fedi />
         </div>
         <div class="display">
             <div class="box content">
@@ -46,7 +45,7 @@ import Layout from '../layouts/astro/main.astro';
         </div>
     </div>
     <div id="touch"/>
-    <div id="config">
+    <div id="config" style="max-height: 22vh;">
         <button id="close-btn">X</button>
         <h3>config</h3>
         <p><input type="checkbox" id="horizontalControlls"> flip horizontal controls</p>

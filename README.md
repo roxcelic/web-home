@@ -29,10 +29,12 @@ This allows me to have the website constantly updating with content at any time 
 > Changes from previous iterations are excluded
 
 * Version
-  - `[1.06]`
-  - README updated, credits added
+  - `[2.00]`
+  - remade everything from scratch, is not visually different but works way better
 
 ## Log
-
+* The changes for version 2.00 are:
+    - remade everything from scratch, is not visually different but works way better
+    
 * The changes for version 1.06 are:
     - README updated, credits added

@@ -1,4 +1,5 @@
-import { parseInfoData, positionChildAbovePlayer, handleKeyEvent, moveDown, TextUpdate, moveUp, unactive   } from "./extra/lib";
+import { parseInfoData, positionChildAbovePlayer, handleKeyEvent, moveDown, TextUpdate } from "./extra/lib";
+import { fetchDataFromWorker, getDataCurrent, getDataSpotify, fetchAndDisplayPosts, getstatus } from "./extra/api";
 
 // Fetch the main elements which contain the content
 const holder = document.getElementById("holder");
@@ -81,8 +82,8 @@ checkboxnames.forEach(element => {
     checkboxs[element] = document.getElementById(element);
 });
 /**set checkbox values */
-if (localStorage.getItem('up')=='s')checkboxs[checkboxnames[0]].checked=true;
-if (localStorage.getItem('left')=='d')checkboxs[checkboxnames[1]].checked=true;
+if (localStorage.getItem('left')=='d')checkboxs[checkboxnames[0]].checked=true;
+if (localStorage.getItem('up')=='s')checkboxs[checkboxnames[1]].checked=true;
 /**checkbox functions */
 checkboxs[checkboxnames[0]].addEventListener('change', function() {
     if (checkboxs[checkboxnames[0]].checked) {
@@ -160,3 +161,19 @@ function handleDoubleTap() {
         config.style.display="block";
     }
 }
+/**api */
+async function start(){
+    try {
+        const data = await fetchDataFromWorker();
+        getDataCurrent(document.getElementById("live-1"), document.getElementById("live-2"), data);
+        getDataSpotify(data);
+        await fetchAndDisplayPosts();
+        getstatus("status", data);
+        children2.forEach((element, index) => {
+            main[`child${index}`] = Array.from(element.children);
+        });
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+}
+start();

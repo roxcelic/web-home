@@ -51,9 +51,15 @@ for (const [key, defaultValue] of Object.entries(defaultValues)) {
 url.search = params.toString();
 window.history.replaceState({}, '', url.toString());
 
+console.log(main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]]);
+
 positionChildAbovePlayer(children, parseInfoData("w_activeCas",parseInfoData("r")[1])[1]);
-if (parseInfoData("r")[0] == false){
+if (parseInfoData("r")[0] == false&&main[`child${parseInfoData("r")[1]}`][parseInfoData("r")[2]]!=undefined){
     moveDown(children, main);
+} else {
+    parseInfoData("w_activeContent",0);
+    parseInfoData("w_canMove",true);
+    parseInfoData("w_lastactive",[0,0]);
 }
 TextUpdate(main,children);
 

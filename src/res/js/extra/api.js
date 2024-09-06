@@ -106,9 +106,11 @@ export async function fetchAndDisplayPosts() {
         const fragment = document.createDocumentFragment();
 
         nonReplies.forEach(post => {
+        if (!post.startsWith('..')) {
             const postElement = createPostElement(post, profilePictureUrl);
             fragment.appendChild(postElement);
-        });
+        }
+    });
 
         contentElement.appendChild(fragment);
     } catch (error) {

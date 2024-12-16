@@ -1,0 +1,12 @@
+// the dark theme
+
+@media (prefers-color-scheme: dark) {
+    :root{
+        --global_text_color: white;
+        
+        --content_block_background: rgb(184, 0, 92);
+        --content_block_border: yellow;
+
+        --wallpaper: url('https://w.wallhaven.cc/full/1p/wallhaven-1pz8z9.png');
+    }
+}

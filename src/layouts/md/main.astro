@@ -1,14 +1,35 @@
 ---
-interface Props {
-	title: string;
-    desc: string;
-}
+const { frontmatter } = Astro.props;
 
-const { desc } = Astro.props;
-const { title } = Astro.props;
-
-import Layout from '../full.astro'
+import Layout from '../full.astro';
+import Music from '../../comp/music.astro';
+import Personal from '../../comp/personal.astro';
+import NavBar from '../../comp/navBar.astro';
 ---
-<Layout desc={ desc } title={ title }>
-	<slot />		
+
+<Layout desc={frontmatter.desc} title={frontmatter.title}>
+	<div id="main">
+        <div id="left">
+            <Music />
+            <div id="leftbutton">
+                <span class="material-symbols-outlined">
+                    arrow_forward_ios
+                </span>
+            </div>
+        </div>
+        <div id="middle">
+            <NavBar />
+            <div class="main_block" style={`text-align: ${frontmatter.text_align};`}>
+                <slot />
+            </div>
+        </div>
+        <div id="right">
+            <Personal />
+            <div id="rightbutton">
+                <span class="material-symbols-outlined">
+                    arrow_back_ios
+                </span>
+            </div>
+        </div>
+    </div>	
 </Layout>

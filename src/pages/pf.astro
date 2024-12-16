@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/astro/main.astro';
+import PortFolioComp from '../comp/pf.astro';
+
+const pf = Object.values(import.meta.glob('./pf/*.md', { eager: true }));
+---
+<Layout desc='roxies little special place' title='portfolio' text_align='left'>
+
+  <p style="text-align: center;">
+    hiii<br>
+    this is where ill post all of my portfolio, currently every entry is a games design project ive done in college, but if you would like to see more visit my <a href="//github.com/roxcelic">github</a>!!
+  </p>
+
+  <hr style="border-color: white;">
+  {pf.map((post: any) => <PortFolioComp url={post.url} title={post.frontmatter.title} desc={post.frontmatter.desc}/>)}
+  
+  <h4>
+    if you are awear of any assets ive used in these installments, that are not credited in either the video or the installment text please inform me, and i appologise for any inconviniences
+  </h4>
+</Layout>

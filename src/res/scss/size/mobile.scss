@@ -1,0 +1,153 @@
+// the mobile style sheet, will use the themed colors
+
+@media (max-width: 768px) {
+    body{
+        height: 100%;
+    }
+    #main {
+        width: 100vw;
+    
+        #left {
+            position: relative;
+            text-align: left;
+
+            animation: slideIn--left 0.6s ease-in-out;
+
+            #leftbutton {
+                display: none;
+            }
+        }
+
+        #middle {
+            position: relative;
+            text-align: center;
+
+            animation: slideIn--up 0.6s ease-in-out;
+
+            flex: 1;
+        }
+
+        #right {
+            position: relative;
+            text-align: right;
+
+            animation: slideIn--right 0.6s ease-in-out;
+
+            #rightbutton{
+                display: none;
+            }
+        }
+    }
+
+    .block{
+        margin: var(--display_block_margin);
+        padding: var(--display_block_padding);
+
+        text-align: center;
+
+        display: block;
+        position: relative;
+        border-radius: var(--global_border-radius);
+
+        border: 3px solid var(--content_block_background);
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.5);
+
+        transition: all 0.3s ease-in-out;
+
+        #music--cover {
+            width: 15vh;
+            height: 15vh;
+
+            margin: auto auto;
+            border-radius: var(--global_border-radius);
+
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+
+    .mobile_hide {
+        display: none;
+    }
+
+    .main_block{
+        margin: var(--display_block_margin);
+        padding: var(--display_block_padding);
+
+        text-align: center;
+
+        display: block;
+        position: relative;
+        border-radius: var(--global_border-radius);
+
+        border: 3px solid var(--content_block_background);
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.5);
+
+        transition: all 0.3s ease-in-out;
+
+        img, video {
+            border-radius: var(--global_border-radius);
+            border: 3px solid var(--content_block_background);
+
+            margin: auto auto;
+        }
+    }
+
+    .profile{
+        text-align: left;
+        padding-bottom: 2.5vh;
+
+        .banner{
+            border-radius: 13px 13px 0 0;
+
+            width: 90%;
+            height: 50px;
+
+            margin: auto auto;
+
+            background-color: black;
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            .pfp {
+                position: absolute;
+    
+                border-radius: 25px;
+                
+                width: 50px;
+                height: 50px;
+
+                top: 75px;
+                left: 50px;
+    
+                background-color: white;
+
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+
+        h2 {
+            position: relative;
+
+            top: 25px;
+
+            width: 90%;
+            margin: auto auto;
+        }
+
+        p {
+            position: relative;
+
+            top: 25px;
+
+            width: 90%;
+            margin: auto auto;
+        }
+    }
+}

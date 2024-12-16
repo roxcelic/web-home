@@ -1,1 +1,60 @@
+@use 'size/mobile';
+@use 'size/desktop';
+
+@use 'colors/dark';
+@use 'colors/light';
+
+@use 'animations/desktop_anims';
+@use 'animations/mobile_anims';
+
 @import url("https://crimtane.roxcelic.love/styles.css");
+
+// worlds best stylesheet right here frfr
+
+:root{
+    --global_border-radius: 5px;
+    
+    --display_block_margin: 12px;
+    --display_block_padding: 12px;
+}
+
+html {
+    overflow-x: hidden;
+
+    background-image: var(--wallpaper);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#loading-bar-container{
+    width: 100%; 
+    height: 10px;
+
+    border-radius: var(--global_border-radius);
+
+    background: #ccc; 
+}
+
+#loading-bar{
+    width: 0%; 
+    height: 100%; 
+
+    border-radius: var(--global_border-radius);
+
+    background: #dc008c;
+
+    transition: all ease-in-out 0.3s;
+}
+
+.astro-code {
+    text-align: start !important;
+}
+
+.nav {
+    text-align: center;
+    justify-content: space-between;
+    display:flex;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}

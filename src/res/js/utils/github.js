@@ -30,6 +30,7 @@ async function loadGithubApi(username) {
 
     } catch (error) {
         console.error(error);
+        profile.url.parentElement.remove();
     }
 }
 

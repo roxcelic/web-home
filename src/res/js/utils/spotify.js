@@ -56,7 +56,6 @@ async function loadMusicApi() {
         });   
 
         document.getElementById("personal_playlist_embed").remove();
-        document.getElementById("leftbutton").remove();
 
         console.error(e);
     }

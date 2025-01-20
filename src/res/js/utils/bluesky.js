@@ -19,7 +19,7 @@ async function loadBskyApi() {
 
         post.text.innerText = data.post.text;
 
-        data.post.embeds.forEach(embed => {
+        if (data.post.embeds != null) data.post.embeds.forEach(embed => {
             const img = document.createElement('img');
             
             img.src = embed.url; 
